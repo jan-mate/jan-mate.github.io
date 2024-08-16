@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mat's Age</title>
+</head>
+<body>
+    <h1>Mat's Age</h1>
+    <p id="age"></p>
+
+    <script>
+        function calculateAge() {
+            const birthDate = new Date('2004-02-05T13:55:00');
+            const now = new Date();
+            const ageInMilliseconds = now - birthDate;
+
+            // Convert milliseconds to years
+            const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25);
+
+            // Display the age with many decimals
+            document.getElementById('age').textContent = ageInYears.toFixed(10) + " years";
+        }
+
+        setInterval(calculateAge, 1000); // Update the age every second
+        calculateAge(); // Initial call to display age immediately
+    </script>
+</body>
+</html>
