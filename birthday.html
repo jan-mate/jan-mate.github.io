@@ -11,25 +11,35 @@
 
     </head>
 <body>
-    <h1>Birthday Peculiarities</h1>
-    <p>I was born on 2004-02-25, but I will have lived for 21 years on 2025-02-24.
-       This is because birthdays don't take into account leap years.
-       I was born 02-25 on a leap year, which means it was 366 days till it was 02-25 again.
-       So on 2005-02-25, I was actually 366/365.2425 = 1.0021 average Gregorian years.
-       But I was born at 13:55, and 2004-02-25 13:55 + 365.2425 days ends up being 2005-02-24 18:44:42,
-       so I had already lived for 1 average Gregorian year on 02-24.
-        This pattern continues for the rest of my life. Which means birthdays can change.
-    </p>
+    <h1>Birthday Math Is Stupid</h1>
+    <p>I was born on 2004-02-<u>25</u>, but I will have lived for 21 years on 2025-02-<u>24</u>. 
+       I'm not special, this happens for everyone.
+       This is because the calander year varies between 365 and 366 days, while an average greorian year is 365.2425 days.
+       Fx, I was born 02-25 on a leap year, which means it was 366 days till it was 02-25 again.
+    But I was born at 13:55, and 2004-02-25 13:55 + 365.2425 days ends up being 2005-02-24 18:44:42, so I had already lived for 1 average Gregorian year on 02-24.
+
+
+    <h2>Check your own birthday!</h2>
     <p>Here's a calculator to enter your birthdatetime to see when you will be different ages:</p>
     
-    <label for="birthDate">Enter your birthdatetime (YYYY-MM-DD HH:MM:SS UTC±HH:MM):</label>
-    <input type="text" id="birthDate" value="2004-02-25 13:55:00 UTC+01:00">
+    <div class="input-container">
+        <div class="input-group birthdatetime">
+            <label for="birthDate">Birthdatetime:</label>
+            <input type="text" id="birthDate" value="2004-02-25 13:55:00 UTC+01:00">
+        </div>
     
-    <label for="minAge">Enter minimum age to calculate:</label>
-    <input type="number" id="minAge" value="20">
+        <div class="input-group minAge">
+            <label for="minAge">Min Age:</label>
+            <input type="number" id="minAge" value="20">
+        </div>
     
-    <label for="maxAge">Enter maximum age to calculate:</label>
-    <input type="number" id="maxAge" value="30">
+        <div class="input-group maxAge">
+            <label for="maxAge">Max Age:</label>
+            <input type="number" id="maxAge" value="30">
+        </div>
+    </div>
+    
+    
     
     <button onclick="calculateFutureDates()">Calculate</button>
 
@@ -45,6 +55,13 @@
         </tbody>
     </table>
     
+
+    <h2>Plots of the birthdates</h2>
+    <p>
+        There are some patterns on smaller scales, as you likely can see,
+        but the full period is 400 years (starting year 0 (yes that exists)). 
+    </p>
+
     <div id="chart-container">
         <canvas id="birthdayChartUTC"></canvas>
         <canvas id="birthdayChartOriginal"></canvas>
@@ -54,7 +71,12 @@
     <div class="clear"></div>
 
     <div id="frequency-container">
-        <h3>Frequency of Each Day</h3>
+        <h2>Frequency of Each Day</h2>
+
+<p>
+    In my lifetime (of around 85) I can expect to most birthdays on 24th, eventho I was born on the 25th.
+</p>
+
         <div id="tables">
             <div>
                 <h4>UTC (UTC+0)</h4>
@@ -124,20 +146,87 @@
             </div>
         </div>
     </div>
-    
-    <p id="agesInTimeRange">Ages where the birthday falls between 10:00-11:59: <span id="ageList"></span></p>
+   
+    <H2>Timezones and stuff</H2>
+
+    <p>
+        Timezones end up making birthdays even more confusing, if you define your birthday on local timezone,
+        and you want to celebrate when you have lived for x amount of avg greorian years, then your birthday will be different in different parts of the world.
+        Due to funky timezones, you can have 3 birthdays at same time?
+        Baker and Howland Islands are UTC-12:00, and Kiribati' Lone Islands are UTC+14, if you have your birthday 10:00-11:59 UTC, you will have 3 birthdays!
+    </p>
+
+    <p id="agesInTimeRange">Ages where the previously given birthday falls between 10:00-11:59 (meaning there will be 3 different dates): <span id="ageList"></span></p>
 
     <div>
-        <label for="birthdayAge">Enter an age to calculate your birthday across time zones:</label>
-        <input type="number" id="birthdayAge" value="21"> <!-- Default age is 24 -->
+        <label for="birthdayAge">Enter an age to calculate your birthday across the world!:</label>
+        <input type="number" id="birthdayAge" value="21"> 
         <button id="birthdayAgeButton">Show on Map</button>
     </div>
 
     <div id="map" style="width: 100%; height: 600px;"></div>
-    <p>Credit to Leaflet as well as https://mapshaper.org/ and https://github.com/evansiroky/timezone-boundary-builder and </p>
+    <p>Credit to <a href="https://leafletjs.com/" style="color: blue;">Leaflet</a> as well as <a href="https://mapshaper.org/" style="color: blue;">mapshaper</a> and <a href="https://github.com/evansiroky/timezone-boundary-builder" style="color: blue;">timezone-boundary-builder</a>.</p>
+
 
     <script src="script.js"></script>
     <script src="map.js"></script> 
+
+    <h2>
+        Years are douts not units
+    </h2>
+
+    <p>
+        A year is different lenght, either 365 or 366 days, this means it's not a unit of time, its a duoit of time.
+        When someone tells you their age in years, you also need to know which year they were x years old, otherwise you dunno how many leap years they have lived through, and you don't know their exact age
+    </p>
+
+    <h2>Does any of this matter?</h2>
+<p>
+This may seem all fun and stuff, and it is :) but there might also be some more serious implications.
+</p>
+
+<h3>Rethinking birthdays</h3>
+<p>
+    Imo if u celebrate some1s birthday on their exact birthday its respectful,
+    cuz you celebrate that they have been alive, not the day of the month they happened to have been born on.
+</p>
+
+<p>
+    But then again, it would be quite cumbersome to know someones birthdatetime, especially when they aren't very close to u. So maybe its for the best.
+</p>
+
+<h3>Legal Implications</h3>
+
+<p>
+    Many laws are defined by age (such as when you can vote, drink, or drive), but how does the law define age? 
+    I'm obviously not a lawyer, so maybe I'm just bad at this, but I can't find the legal definition of age in any country (and I'm too lazy to Google for more than 5 minutes).
+</p>
+
+<p>
+    Age is typically calculated by subtracting the year of birth from the current year and considering whether the person has already had their birthday that year. 
+    However, this depends on how birthdays are defined, and most people define birthdays as the same MM-DD of the year they were born, 
+    which, as previously shown, isn't the same as the actual time spent alive.
+</p>
+
+<p>
+    Since that age is based on "duoit years," it seems a bit unfair that not everyone has to wait the same amount of time until they can vote (potentially anti-democratic even).
+    By "duoit years," I would've had to wait until 2022-02-25 before I could buy alcohol in my country, but I had already lived 18 average Gregorian years by 2022-02-24. 
+    I lost about an hour of time to buy alcohol—that's discrimination based on birth time, which isn't something I chose myself. 
+    I was born with it. It sounds like a human rights violation to treat people based on something they’re born with, rather than their personality.
+</p>
+
+<p>
+    But I don't really know how the law works, and I wasn't buying alcohol on 2022-02-24 at 23:00, so it didn't affect me. 
+    However, in some hypothetical scenario, it might affect someone, and it could have worse consequences.
+</p>
+
+<p>
+    A different scenario might involve prison time. If you get sentenced to prison for 1 year, is that based on "duoit" or "unit" years? 
+    Because it would be unfair if it was based on "duoit" years.
+</p>
+
+
+
 </body>
 
 </html>

@@ -19,13 +19,46 @@ p {
 }
 
 label, input, button {
-    display: block;
-    margin: 10px auto;
     font-size: 1em;
 }
 
-input[type="text"], input[type="number"] {
-    width: 80%;
+/* Flexbox container for inputs */
+.input-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px auto;
+    width: 80%;  /* Adjusts the width of the container */
+}
+
+/* Flexbox items */
+.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Make birthdatetime input larger */
+.input-group.birthdatetime {
+    flex-grow: 1; /* Takes up remaining space */
+}
+
+.input-group.birthdatetime input {
+    width: 100%;  /* Fills the available space */
+}
+
+/* Fixed width for minAge and maxAge inputs */
+.input-group.minAge input, .input-group.maxAge input {
+    width: 50px;  /* Fixed width to fit 3 characters */
+    text-align: center;
+}
+
+/* Spacing adjustments */
+.input-group label {
+    margin-right: 10px;
+}
+
+.input-group input {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -89,7 +122,6 @@ th {
     clear: both;
 }
 
-
 .info.legend {
     background-color: white;
     padding: 6px 8px;
@@ -111,4 +143,3 @@ th {
     opacity: 0.7;
     vertical-align: middle;
 }
-
