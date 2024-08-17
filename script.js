@@ -142,11 +142,14 @@ function plotBirthdaysUTC(ages, dates, minDay, maxDay) {
                         display: true,
                         text: 'Day of Month'
                     },
+                    min: Math.floor(minDay - 0.5), // Extend the range by 0.5 below
+                    max: Math.ceil(maxDay + 0.5),  // Extend the range by 0.5 above
                     ticks: {
-                        stepSize: 1
-                    },
-                    min: minDay,
-                    max: maxDay
+                        stepSize: 1,  // Ensure ticks only at whole numbers
+                        callback: function(value) {
+                            return Number.isInteger(value) ? value : '';
+                        }
+                    }
                 },
                 x: {
                     title: {
@@ -161,6 +164,8 @@ function plotBirthdaysUTC(ages, dates, minDay, maxDay) {
         }
     });
 }
+
+
 
 function plotBirthdaysOriginal(ages, dates, minDay, maxDay) {
     const ctx = document.getElementById('birthdayChartOriginal').getContext('2d');
@@ -195,11 +200,14 @@ function plotBirthdaysOriginal(ages, dates, minDay, maxDay) {
                         display: true,
                         text: 'Day of Month'
                     },
+                    min: Math.floor(minDay - 0.5), // Extend the range by 0.5 below
+                    max: Math.ceil(maxDay + 0.5),  // Extend the range by 0.5 above
                     ticks: {
-                        stepSize: 1
-                    },
-                    min: minDay,
-                    max: maxDay
+                        stepSize: 1,  // Ensure ticks only at whole numbers
+                        callback: function(value) {
+                            return Number.isInteger(value) ? value : '';
+                        }
+                    }
                 },
                 x: {
                     title: {
@@ -214,6 +222,8 @@ function plotBirthdaysOriginal(ages, dates, minDay, maxDay) {
         }
     });
 }
+
+
 
 document.addEventListener('DOMContentLoaded', (event) => {
     calculateFutureDates();
