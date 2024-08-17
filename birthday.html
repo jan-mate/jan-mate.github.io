@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Peculiarities</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .underline {
+            text-decoration: underline;
+        }
+        #chart-container {
+            width: 70%;
+            margin: 40px auto;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Birthday Peculiarities</h1>
+    <p>I was born on 2004-02-25, but I will have lived for 21 years on 2025-02-24.
+       This is because birthdays don't take into account leap years.
+       I was born 02-25 on a leap year, which means it was 366 days till it was 02-25 again.
+       So on 2005-02-25, I was actually 366/365.2425 = 1.0021 average Gregorian years.
+       But I was born at 13:55, and 2004-02-25 13:55 + 365.2425 days ends up being 2005-02-24 18:44:42,
+       so I had already lived for 1 average Gregorian year on 02-24.
+        This pattern continues for the rest of my life. Which means birthdays can change.
+    </p>
+    <p>Here's a calculator to enter your birthdatetime to see when you will be different ages:</p>
+    
+    <label for="birthDate">Enter your birthdatetime (YYYY-MM-DD HH:MM:SS):</label>
+    <input type="text" id="birthDate" value="2004-02-25 13:55:00">
+    <br>
+    <label for="minAge">Enter minimum age to calculate:</label>
+    <input type="number" id="minAge" value="20">
+    <br>
+    <label for="maxAge">Enter maximum age to calculate:</label>
+    <input type="number" id="maxAge" value="30">
+    <br><br>
+    <button onclick="calculateFutureDates()">Calculate</button>
+
+    <table id="futureDatesTable">
+        <thead>
+            <tr>
+                <th>Age</th>
+                <th>Datetime</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <div id="chart-container">
+        <canvas id="birthdayChart"></canvas>
+    </div>
+
+    <div id="frequency-container">
+        <h3>Frequency of Each Day</h3>
+        <table id="frequencyTable">
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Frequency</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    
+
+    <script>
+        let birthdayChart; // Declare the chart variable outside to allow updating
+
+        function calculateFutureDates() {
+            const birthDateString = document.getElementById('birthDate').value;
+            const minAge = parseInt(document.getElementById('minAge').value);
+            const maxAge = parseInt(document.getElementById('maxAge').value);
+
+            if (isNaN(minAge) || isNaN(maxAge) || minAge <= 0 || maxAge <= 0 || minAge > maxAge) {
+                alert("Please enter valid minimum and maximum ages. Minimum age must be greater than 0 and less than or equal to maximum age.");
+                return;
+            }
+
+            const birthDateTime = new Date(birthDateString.replace(' ', 'T'));
+
+            if (isNaN(birthDateTime.getTime())) {
+                alert("Please enter a valid ISO format datetime (YYYY-MM-DD HH:MM:SS).");
+                return;
+            }
+
+            const secondsInYear = 365.2425 * 24 * 60 * 60; // seconds in a Gregorian year
+            const futureDatesTable = document.getElementById('futureDatesTable').getElementsByTagName('tbody')[0];
+            futureDatesTable.innerHTML = ''; // Clear previous results
+
+            const dates = [];
+            const ages = [];
+            let minDay = Number.MAX_SAFE_INTEGER;
+            let maxDay = Number.MIN_SAFE_INTEGER;
+
+            for (let age = minAge; age <= maxAge; age++) {
+                const totalSecondsToAdd = age * secondsInYear;
+                const futureDateTime = new Date(birthDateTime.getTime() + totalSecondsToAdd * 1000);
+                let futureDateFormatted = futureDateTime.toISOString().replace('T', ' ').split('.')[0];
+
+                const dateParts = futureDateFormatted.split(' ');
+                const datePart = dateParts[0].split('-');
+                const day = parseInt(datePart[2], 10);
+                minDay = Math.min(minDay, day);
+                maxDay = Math.max(maxDay, day);
+                datePart[2] = `<span class="underline">${day}</span>`;
+                futureDateFormatted = datePart.join('-') + ' ' + dateParts[1];
+
+                const newRow = futureDatesTable.insertRow();
+                const cellAge = newRow.insertCell(0);
+                const cellDate = newRow.insertCell(1);
+
+                cellAge.textContent = age;
+                cellDate.innerHTML = futureDateFormatted;
+
+                // Store the day and age for plotting
+                dates.push(day);
+                ages.push(age);
+            }
+
+            // If the chart already exists, destroy it before creating a new one
+            if (birthdayChart) {
+                birthdayChart.destroy();
+            }
+
+            plotBirthdays(ages, dates, minDay, maxDay);
+        }
+
+        function plotBirthdays(ages, dates, minDay, maxDay) {
+    const ctx = document.getElementById('birthdayChart').getContext('2d');
+    birthdayChart = new Chart(ctx, {
+        type: 'scatter', // Change to 'scatter' for dots only
+        data: {
+            labels: ages,
+            datasets: [{
+                label: 'Day of Birthday',
+                data: ages.map((age, index) => ({ x: age, y: dates[index] })), // Map the ages and dates to {x, y} format
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 1)', // Color of the dots
+                borderWidth: 1,
+                showLine: false, // Disable the line
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Day of Month'
+                    },
+                    ticks: {
+                        stepSize: 1
+                    },
+                    min: minDay,
+                    max: maxDay
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Age'
+                    },
+                    type: 'linear',
+                    min: Math.min(...ages), // Ensure the x-axis starts at the minAge
+                    max: Math.max(...ages)  // Ensure the x-axis ends at the maxAge
+                }
+            }
+        }
+    });
+
+    // Calculate the frequency, median, and average of each day
+    const dayCounts = dates.reduce((acc, day) => {
+        acc[day] = (acc[day] || 0) + 1;
+        return acc;
+    }, {});
+
+    const sortedDates = [...dates].sort((a, b) => a - b);
+    const median = calculateMedian(sortedDates);
+    const average = calculateAverage(sortedDates);
+
+    // Display the frequency table along with median and average
+    displayFrequencyTable(dayCounts, median, average);
+}
+
+function calculateMedian(values) {
+    const mid = Math.floor(values.length / 2);
+    if (values.length % 2 === 0) {
+        return (values[mid - 1] + values[mid]) / 2;
+    } else {
+        return values[mid];
+    }
+}
+
+function calculateAverage(values) {
+    const sum = values.reduce((a, b) => a + b, 0);
+    return sum / values.length;
+}
+
+function displayFrequencyTable(dayCounts, median, average) {
+    const frequencyTable = document.getElementById('frequencyTable');
+    frequencyTable.innerHTML = ''; // Clear any existing content
+
+    for (const [day, count] of Object.entries(dayCounts)) {
+        const newRow = frequencyTable.insertRow();
+        const cellDay = newRow.insertCell(0);
+        const cellCount = newRow.insertCell(1);
+
+        cellDay.textContent = day;
+        cellCount.textContent = count;
+    }
+
+
+    // Add row for average
+    const averageRow = frequencyTable.insertRow();
+    const averageCellDay = averageRow.insertCell(0);
+    const averageCellCount = averageRow.insertCell(1);
+    averageCellDay.textContent = 'Average';
+    averageCellCount.textContent = average.toFixed(2);
+}
+
+
+    </script>
+</body>
+</html>
