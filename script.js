@@ -42,6 +42,13 @@ function calculateFutureDates() {
     const ages = [];
     let minDay = Number.MAX_SAFE_INTEGER;
     let maxDay = Number.MIN_SAFE_INTEGER;
+    const dayColors = {};
+    let colorIndex = 0;
+
+    const colors = [
+        '#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#FFB533',
+        '#8D33FF', '#33FFF4', '#FFC733', '#FF5733', '#33FF57'
+    ];
 
     for (let age = minAge; age <= maxAge; age++) {
         let futureDateTime;
@@ -54,29 +61,37 @@ function calculateFutureDates() {
         }
 
         let futureDateFormattedUTC = futureDateTime.toISOString().replace('T', ' ').split('.')[0];
+        const utcDay = parseInt(futureDateFormattedUTC.split(' ')[0].split('-')[2], 10);
 
         const futureDateInOriginalOffset = new Date(futureDateTime.getTime() + timezoneOffsetTotalMinutes * 60 * 1000);
         let futureDateFormattedOriginal = futureDateInOriginalOffset.toISOString().replace('T', ' ').split('.')[0];
+        const originalDay = parseInt(futureDateFormattedOriginal.split(' ')[0].split('-')[2], 10);
 
-        const dateParts = futureDateFormattedOriginal.split(' ');
-        const datePart = dateParts[0].split('-');
-        const day = parseInt(datePart[2], 10);
-        minDay = Math.min(minDay, day);
-        maxDay = Math.max(maxDay, day);
-        datePart[2] = `<span class="underline">${day.toString().padStart(2, '0')}</span>`;
-        futureDateFormattedOriginal = datePart.join('-') + ' ' + dateParts[1];
+        minDay = Math.min(minDay, originalDay);
+        maxDay = Math.max(maxDay, originalDay);
+
+        // Assign a color to each unique day in both UTC and Original
+        if (!dayColors[utcDay]) {
+            dayColors[utcDay] = colors[colorIndex % colors.length];
+            colorIndex++;
+        }
+
+        futureDateFormattedOriginal = futureDateFormattedOriginal.split('-').join('-') + ' ' + futureDateFormattedOriginal.split(' ')[1];
 
         const newRow = futureDatesTable.insertRow();
         const cellAge = newRow.insertCell(0);
         const cellDateUTC = newRow.insertCell(1);
         const cellDateOriginal = newRow.insertCell(2);
 
-        cellAge.textContent = age;
-        cellDateUTC.innerHTML = `${futureDateFormattedUTC} UTC`;
-        cellDateOriginal.innerHTML = `${futureDateFormattedOriginal} UTC${dateTimeMatch[2]}:${dateTimeMatch[3]}`;
+        const utcColor = dayColors[utcDay];
+        const originalColor = dayColors[originalDay];
 
-        datesUTC.push(parseInt(futureDateFormattedUTC.split(' ')[0].split('-')[2], 10));
-        datesOriginal.push(day);
+        cellAge.textContent = age;
+        cellDateUTC.innerHTML = `<span style="color:${utcColor}">${futureDateFormattedUTC} UTC</span>`;
+        cellDateOriginal.innerHTML = `<span style="color:${originalColor}">${futureDateFormattedOriginal} UTC${dateTimeMatch[2]}:${dateTimeMatch[3]}</span>`;
+
+        datesUTC.push(utcDay);
+        datesOriginal.push(originalDay);
         ages.push(age);
     }
 
@@ -91,6 +106,8 @@ function calculateFutureDates() {
     plotBirthdaysOriginal(ages, datesOriginal, minDay, maxDay);
     calculateFrequencies(datesUTC, datesOriginal, minAge, maxAge, adjustedBirthDateTime);
 }
+
+
 
 function plotBirthdaysUTC(ages, dates, minDay, maxDay) {
     const ctx = document.getElementById('birthdayChartUTC').getContext('2d');
