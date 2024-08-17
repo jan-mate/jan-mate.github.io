@@ -325,3 +325,54 @@ function displayFrequencyTable(dayCounts, tableId, startAge, endAge) {
 
     frequencyTable.appendChild(tbody);
 }
+
+function calculateAgesInTimeRange() {
+    const birthDateString = document.getElementById('birthDate').value;
+
+    const dateTimeMatch = birthDateString.match(/(.*)\sUTC([+-]\d{2}):(\d{2})/);
+
+    if (!dateTimeMatch) {
+        alert("Please enter the datetime in the correct ISO format (YYYY-MM-DD HH:MM:SS UTC±hh:mm).");
+        return;
+    }
+
+    const dateTimePart = dateTimeMatch[1];
+    const timezoneOffsetHours = parseInt(dateTimeMatch[2], 10);
+    const timezoneOffsetMinutes = parseInt(dateTimeMatch[3], 10);
+    timezoneOffsetTotalMinutes = timezoneOffsetHours * 60 + Math.sign(timezoneOffsetHours) * timezoneOffsetMinutes;
+
+    const birthDateTime = new Date(dateTimePart.replace(' ', 'T') + 'Z');
+    const adjustedBirthDateTime = new Date(birthDateTime.getTime() - timezoneOffsetTotalMinutes * 60 * 1000);
+
+    if (isNaN(adjustedBirthDateTime.getTime())) {
+        alert("Please enter a valid ISO format datetime (YYYY-MM-DD HH:MM:SS).");
+        return;
+    }
+
+    const secondsInYear = 365.2425 * 24 * 60 * 60; // seconds in a Gregorian year
+    const agesInTimeRange = []; // List to store ages where UTC time is between 10:00 and 11:59
+
+    for (let age = 0; age <= 100; age++) {
+        let futureDateTime;
+
+        if (age === 0) {
+            futureDateTime = new Date(adjustedBirthDateTime.getTime());
+        } else {
+            const totalMillisecondsToAdd = age * secondsInYear * 1000;
+            futureDateTime = new Date(adjustedBirthDateTime.getTime() + totalMillisecondsToAdd);
+        }
+
+        // Check if the time is between 10:00 and 11:59 UTC
+        const hour = futureDateTime.getUTCHours();
+        if (hour >= 10 && hour < 12) {
+            agesInTimeRange.push(age);
+        }
+    }
+
+    // Display the ages in the specified time range
+    document.getElementById('ageList').textContent = agesInTimeRange.join(', ');
+}
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    calculateAgesInTimeRange();
+});

@@ -136,5 +136,3 @@ function addLegend(map, daysPresent) {
     newLegend.addTo(map);
     return newLegend;  // Return the new legend control
 }
-
-
