@@ -1,0 +1,142 @@
+/* src/style.css */
+body {
+    background-color: #111111;
+    color: #ffffff;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #222222;
+    color: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+p {
+    font-size: 1.5em;
+}
+
+#rainbow-text {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+#rainbow-text span:nth-child(1) {
+    color: red;
+}
+#rainbow-text span:nth-child(2) {
+    color: orange;
+}
+#rainbow-text span:nth-child(3) {
+    color: yellow;
+}
+#rainbow-text span:nth-child(4) {
+    color: green;
+}
+#rainbow-text span:nth-child(5) {
+    color: blue;
+}
+#rainbow-text span:nth-child(6) {
+    color: indigo;
+}
+#rainbow-text span:nth-child(7) {
+    color: red;  /* Set the last letter to red */
+}
+
+.flag-image {
+    height: 1.8em; /* Set the height slightly taller than the text */
+    vertical-align: middle; /* Align it vertically with the text */
+}
+
+.stuff-ive-made {
+    background-color: #222222;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    height: 500px; /* Adjust height based on how many projects you want to display */
+}
+
+.random-projects {
+    position: relative;
+    height: 100%;
+}
+
+.project-item {
+    position: absolute;
+    font-size: 18px;
+    color: #FFFFFF;
+    text-decoration: none;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.project-item img {
+    width: 90%; /* Image is 90% of the original size */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.3s ease; /* Add transition for smooth scaling */
+}
+
+.project-item:hover {
+    transform: scale(1.1);
+}
+
+.project-item:hover img {
+    transform: scale(1.1); /* Image scales on hover */
+}
+
+.project-item a {
+    display: block;
+    margin-top: 10px;
+    color: #FFFFFF; /* Keep the text color white */
+    text-decoration: none; /* Remove underline */
+    transition: transform 0.3s ease; /* Add transition for smooth scaling */
+}
+
+/* Random placements - You can adjust these percentages or use more for added randomness */
+.project-item:nth-child(1) {
+    top: 10%;
+    left: 30%;
+}
+
+.project-item:nth-child(2) {
+    top: 40%;
+    left: 60%;
+}
+
+.project-item:nth-child(3) {
+    top: 60%;
+    left: 15%;
+}
+
+.project-item:nth-child(4) {
+    top: 60%;
+    left: 10%;
+}
+
+.project-item:nth-child(5) {
+    top: 50%;
+    left: 70%;
+}
+
+.project-item:nth-child(6) {
+    top: 80%;
+    left: 40%;
+}

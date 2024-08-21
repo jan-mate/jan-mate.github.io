@@ -3,52 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mat's Age</title>
-    <style>
-        body {
-            background-color: #111111;
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
-
-        p {
-            font-size: 2em;
-        }
-    </style>
+    <title>Mat's Personal Website</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="src/style.css" rel="stylesheet">
 </head>
 <body>
-    <div>
-        <h1>Mat's Age</h1>
-        <p id="age"></p>
-        <a href="/birthday.html">Go to the Birthday Page</a>
-    </div>
+    <header class="text-center py-4">
+        <h1>Hi, I'm Mat</h1>
+        <p id="summary">I'm a <span id="age"></span> ML and Data Science student</p>
+        <p style="font-size: 12px;">(btw theres no reason for this site to exist other than i wanted to play with front-end development)</p>
 
-    <script>
-        function calculateAge() {
-            const birthDate = new Date('2004-02-05T13:55:00');
-            const now = new Date();
-            const ageInMilliseconds = now - birthDate;
+    </header>
 
-            // Convert milliseconds to years
-            const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.2425);
+    <main class="container text-center mt-3">
+        <p>My favorite flag is <img src="ee.png" alt="Favorite Flag" class="flag-image"></p>
+        <p>My favorite train is <a href="https://maps.google.com/?q=32.82881,13.11156" class="blue-link" target="_blank">this one</a></p>
+        <p>My favorite color is <strong id="rainbow-text"></strong></p>
+        <p>My favorite fruit is <a href="https://en.wikipedia.org/wiki/Mango" target="_blank">Mangifera indica</a> (Tommy Atkins) <a href="https://en.wikipedia.org/wiki/Mango" target="_blank">🥭</a></p>
 
-            // Display the age with many decimals
-            document.getElementById('age').textContent = ageInYears.toFixed(10) + " years";
-        }
 
-        setInterval(calculateAge, 10); // Update the age every second
-        calculateAge(); // Initial call to display age immediately
-    </script>
+        <section class="stuff-ive-made mt-5">
+            <h2>Stuff I've Made</h2>
+            <div class="random-projects">
+                <!-- Journalize Logo and Project Link -->
+                <div class="project-item journalize" style="top: 10%; left: 25%;">
+                    <a href="https://github.com/jan-mate/journalize" target="_blank" class="project-link">
+                        <img src="journalize_white_logo.png" alt="Journalize Logo" class="project-logo">
+                        <span>Journalize</span>
+                    </a>
+                </div>
+                <!-- Other Project Links -->
+                <div class="project-item" style="top: 42.0%; left: 69%;">
+                        <a href="/birthday" class="project-link">Birthday Math</a>
+                    </div>
+                    
+                <div class="project-item" style="top: 69%; left: 40%;">
+                    <a href="../spacer/index.html" class="project-link">S P A C E R</a>
+                </div>
+                
+                <!-- Add more projects as needed -->
+            </div>
+        </section>
+        
+    </main>
 
+    <script src="src/main.js"></script>
 </body>
 </html>

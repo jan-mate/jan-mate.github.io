@@ -1,0 +1,180 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items at the top instead of the center */
+    background-color: #111111;
+    color: white;
+    font-family: Helvetica, Arial, sans-serif;
+    overflow-y: auto; /* Allow scrolling if content exceeds the viewport */
+}
+
+.container {
+    text-align: center;
+    width: 80%;
+    margin-top: 20px; /* Add some margin at the top for better spacing */
+}
+
+.large-input {
+    width: 100%;
+    height: 300px; /* Keep the height larger as before */
+    padding: 15px;
+    font-size: 24px;
+    margin: 10px 0;
+    text-align: left; /* Align text to the left */
+    background-color: #222222;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    box-sizing: border-box; /* Ensures padding is included in the width */
+    resize: none; /* Prevents resizing */
+    overflow-y: auto; /* Enables vertical scrolling if content exceeds height */
+}
+
+
+
+.large-button {
+    width: 100%;
+    height: 60px; /* Adjust height as needed */
+    font-size: 24px; /* Same font size for consistency */
+    background-color: #444444;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin: 10px 0;
+    cursor: pointer;
+    box-sizing: border-box; /* Ensures padding is included in the width */
+}
+
+.large-button:hover {
+    background-color: #555555;
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Full width of the container */
+    align-items: flex-end; /* Right-align the options */
+}
+
+.options-header {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.options h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    width: 100%; /* Ensure it takes up the full width of the parent container */
+}
+
+h2 {
+    margin: 10px 0;
+    font-size: 24px;
+}
+
+.option-group {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Right-align the content */
+    margin: 10px 0;
+    position: relative;
+}
+
+.option-group label {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.number-input {
+    width: 60px; /* Ensure the input is square */
+    height: 60px; /* Ensure the input is square */
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 10px; /* Rounded corners for consistency */
+    border: 1px solid #444444; /* Ensure consistent border color */
+    background-color: #333333;
+    color: white;
+    text-align: center; /* Center text inside the input */
+    box-sizing: border-box; /* Ensures padding is included in the width/height */
+    -moz-appearance: textfield; /* Hide spinner in Firefox */
+    appearance: textfield; /* Hide spinner in WebKit browsers */
+}
+
+.number-input::-webkit-inner-spin-button,
+.number-input::-webkit-outer-spin-button {
+    -webkit-appearance: none; /* Hide spinner in WebKit browsers */
+    margin: 0;
+}
+
+.capitalize-group {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Right-align the checkbox and label */
+    margin: 10px 0;
+}
+
+.styled-checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.styled-checkbox {
+    width: 60px; /* Same width as number inputs for consistency */
+    height: 60px; /* Same height as number inputs for consistency */
+    background-color: #333333;
+    border: 2px solid #444444; /* Consistent border color */
+    border-radius: 10px; /* Rounded corners for consistency */
+    cursor: pointer;
+    box-sizing: border-box; /* Ensures padding is included in the width/height */
+    position: relative;
+    appearance: none; /* Remove default styling */
+    outline: none;
+}
+
+.styled-checkbox:checked {
+    background-color: #444444; /* Background color when checked */
+}
+
+.styled-checkbox::before {
+    content: '';
+    display: block;
+    width: 40px; /* Increase width for larger checkmark */
+    height: 40px; /* Increase height for larger checkmark */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the checkmark */
+    color: white; /* White checkmark */
+    font-size: 32px; /* Increase font size for larger checkmark */
+    line-height: 1;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* Hidden by default */
+}
+
+.styled-checkbox:checked::before {
+    opacity: 1; /* Show checkmark when checked */
+    content: '✔'; /* Unicode checkmark */
+}
+
+.styled-checkbox-label {
+    font-size: 20px;
+    color: white;
+    line-height: 60px; /* Align text vertically with the checkbox */
+    display: inline-block;
+    cursor: pointer;
+    margin-right: 10px; /* Margin to align with the checkbox */
+}
+
+.option-group input {
+    margin-left: 10px; /* Ensure spacing between label and input */
+}

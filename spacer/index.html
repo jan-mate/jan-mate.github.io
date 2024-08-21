@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S P A C E R</title>
+    <link href="style.css" rel="stylesheet"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <div class="container">
+        <textarea id="inputText" placeholder="Type something here..." class="large-input"></textarea>
+        <textarea id="outputText" class="large-input" readonly></textarea>
+        
+        <!-- Large copy button -->
+        <button id="copy" class="large-button">C O P Y</button>
+        
+        <!-- Options section -->
+        <div class="options">
+            <h1>O p t i o n s</h>
+            <div class="option-group">
+                <label for="spaces">S p a c e s</label>
+                <input type="number" id="spaces" value="1" min="1" class="number-input">
+            </div>
+            <div class="option-group">
+                <label for="newlines">N e w l i n e s</label>
+                <input type="number" id="newlines" value="2" min="1" class="number-input">
+            </div>
+            <div class="option-group capitalize-group">
+                <div class="styled-checkbox-wrapper">
+                    <label for="capitalize" class="styled-checkbox-label">C A P I T A L I Z E</label>
+                    <input type="checkbox" id="capitalize" class="styled-checkbox">
+                </div>
+            </div>
+            <div class="option-group space-links-group">
+                <div class="styled-checkbox-wrapper">
+                    <label for="spaceLinks" class="styled-checkbox-label">K&nbsp;E&nbsp;E&nbsp;P&nbsp;&nbsp;&nbsp;L&nbsp;I&nbsp;N&nbsp;K&nbsp;S</label>
+                    <input type="checkbox" id="spaceLinks" class="styled-checkbox" checked>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
