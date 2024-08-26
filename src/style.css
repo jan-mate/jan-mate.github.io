@@ -37,6 +37,7 @@ p {
     font-size: 1.5em;
 }
 
+
 #rainbow-text span:nth-child(1) {
     color: red;
 }
@@ -60,6 +61,11 @@ p {
 }
 
 .flag-image {
+    height: 1.8em; /* Set the height slightly taller than the text */
+    vertical-align: middle; /* Align it vertically with the text */
+}
+
+.loaf-image {
     height: 1.8em; /* Set the height slightly taller than the text */
     vertical-align: middle; /* Align it vertically with the text */
 }
