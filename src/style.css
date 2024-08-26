@@ -60,15 +60,14 @@ p {
     color: red;  /* Set the last letter to red */
 }
 
-.flag-image {
+.loaf-image, .flag-image {
     height: 1.8em; /* Set the height slightly taller than the text */
+    width: auto; /* Maintain aspect ratio */
+    max-height: 1.8em; /* Ensure it doesn't exceed the text height */
     vertical-align: middle; /* Align it vertically with the text */
+    display: inline-block; /* Ensure consistent alignment */
 }
 
-.loaf-image {
-    height: 1.8em; /* Set the height slightly taller than the text */
-    vertical-align: middle; /* Align it vertically with the text */
-}
 
 .stuff-ive-made {
     background-color: #222222;
