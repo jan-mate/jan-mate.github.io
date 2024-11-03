@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASD Test</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <link href="src/styles.css" rel="stylesheet">
+    <style>
+        .wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 15px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        th {
+            font-size: 1.1em;
+        }
+        .question-text {
+            text-align: left;
+            width: 60%;
+        }
+        .checkbox-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            margin: auto;
+        }
+        
+        .title {
+            font-size: 2em;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <h1 class="title">Adult Autism Screening</h1>
+
+    <p>
+        FOSS ML ASD prediction. Can be answered by yourself or others.
+    </p>
+
+    <div id="app" class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Question</th>
+                    <th>Disagree</th>
+                    <th>Agree</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(question, index) in questions" :key="index">
+                    <td class="question-text">{{ index + 1 }}. {{ question.text }}</td>
+                    <td>
+                        <label class="checkbox-container">
+                            <input type="radio" :name="'q' + index" value="Disagree" v-model="responses[index]">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                    <td>
+                        <label class="checkbox-container">
+                            <input type="radio" :name="'q' + index" value="Agree" v-model="responses[index]">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="question-text">11. Please select your gender:</td>
+                    <td colspan="2">
+                        <label class="left-aligned-checkbox-container">
+                            <input type="radio" name="gender" value="0" v-model="additional.gender">
+                            <span class="checkmark"></span> Female
+                        </label>
+                        <label class="left-aligned-checkbox-container">
+                            <input type="radio" name="gender" value="1" v-model="additional.gender">
+                            <span class="checkmark"></span> Male
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="question-text">12. Do you have a family history of PDD?</td>
+                    <td colspan="2">
+                        <label class="left-aligned-checkbox-container">
+                            <input type="radio" name="family_history_PDD" value="1" v-model="additional.family_history_PDD">
+                            <span class="checkmark"></span> Yes
+                        </label>
+                        <label class="left-aligned-checkbox-container">
+                            <input type="radio" name="family_history_PDD" value="0" v-model="additional.family_history_PDD">
+                            <span class="checkmark"></span> No
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="question-text">13. What is your relation?</td>
+                    <td colspan="2">
+                        <label class="left-aligned-checkbox-container">
+                            <input type="radio" name="relation" value="0" v-model="additional.relation">
+                            <span class="checkmark"></span> Self
+                        </label>
+                        <label class="left-aligned-checkbox-container">
+                            <input type="radio" name="relation" value="1" v-model="additional.relation">
+                            <span class="checkmark"></span> Parent
+                        </label>
+                        <label class="left-aligned-checkbox-container">
+                            <input type="radio" name="relation" value="2" v-model="additional.relation">
+                            <span class="checkmark"></span> Health Care Professional
+                        </label>
+                        <label class="left-aligned-checkbox-container">
+                            <input type="radio" name="relation" value="3" v-model="additional.relation">
+                            <span class="checkmark"></span> Relative
+                        </label>
+                        <label class="left-aligned-checkbox-container">
+                            <input type="radio" name="relation" value="4" v-model="additional.relation">
+                            <span class="checkmark"></span> Other
+                        </label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <button @click="predict" class="predict-button">Predict</button>
+        
+        <div v-if="prediction" class="result">
+            <p>{{ prediction }}</p>
+            <p>{{ confidence }}</p>
+        </div>
+    </div>
+
+
+    
+
+<div class="additional-info">
+    <h2>Is this trustworthy?</h2>
+    <p>
+        The purpose of this tool is to provide initial guidance but should not replace professional diagnosis.
+        The model is a simple logistic regression model trained using SK-learn's default params. It does about as well as a more advanced (convolutional) neural network, which seem to be the state-of-the-art according to this 
+        <a href="https://www.sciencedirect.com/science/article/pii/S1877050920308656" target="_blank">paper</a>.
+        On the test set, it had 96.69% accuracy, and 96% F1-score. It's trained on 
+        <a href="https://archive.ics.uci.edu/dataset/426/autism+screening+adult" target="_blank">this dataset</a> from the UCI Machine Learning Repository.
+    </p>
+    
+    <h2>Is this safe?</h2>
+    <p>
+        Yes. Unlike other online tests, this one doesn’t gather your data. Don’t trust me? You can read the source code.
+    </p>
+    
+    <h2>Why does this exist?</h2>
+    <p>
+        <ol>
+            <li>I was curious about the probability of me having ASD, and there didn’t seem to be any publicly available models using ML or Bayes Theorem, so I made my own. Due to the nature of ASD, it’s quite hard to self-diagnose. There’s no good data on base rates for autistic symptoms, so simply using Bayes Theorem isn’t as reliable. Therefore, I concluded the best option is to use ML, and some actual researchers talk about this, so it’s hopefully not too outlandish.</li>
+            <li>I wanted to try out a JavaScript framework, which is why this site exists. For me, this site isn’t useful because I trust the other models more. But they agree about 99% of the time anyway.</li>
+        </ol>
+    </p>
+    
+
+    <div class="additional-info">
+        <h2>What is your favorite squirrel ASCII art?</h2>
+        <p>This one by <a href="https://ascii.co.uk/art/squirrel" target="_blank">jgs</a>:</p>
+        <pre>
+                                      _
+                                  .-'` `}
+                          _./)   /       }
+                        .'o   \ |       }
+                        '.___.'`.\    {`
+                        /`\_/  , `.    }
+                        \=' .-'   _`\  {
+                         `'`;/      `,  }
+                            _\       ;  }
+                           /__`;-...'--'
+        </pre>
+    </div>
+    
+
+
+    <script src="src/script.js"></script>
+</body>
+</html>

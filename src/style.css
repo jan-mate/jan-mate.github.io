@@ -74,7 +74,7 @@ p {
     padding: 20px;
     border-radius: 10px;
     position: relative;
-    height: 500px; /* Adjust height based on how many projects you want to display */
+    height: 700px;
 }
 
 .random-projects {
