@@ -1,0 +1,149 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    text-align: center;
+    padding: 20px 0;
+}
+
+main {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.plot-container {
+    position: relative;
+    width: 100%;
+    height: 700px;
+    margin: 0 auto;
+}
+
+.axis-x {
+    position: absolute;
+    left: 50px;
+    right: 50px;
+    bottom: 50%;
+    height: 4px;
+    background-color: #ffffff;
+}
+
+.axis-y {
+    position: absolute;
+    top: 30px;
+    bottom: 30px;
+    left: 50%;
+    width: 4px;
+    background-color: #ffffff;
+}
+
+.arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+.left-arrow {
+    top: -8px;
+    left: -12px;
+    border-width: 10px 12px 10px 0;
+    border-color: transparent #ffffff transparent transparent;
+}
+
+.right-arrow {
+    top: -8px;
+    right: -12px;
+    border-width: 10px 0 10px 12px;
+    border-color: transparent transparent transparent #ffffff;
+}
+
+.top-arrow {
+    top: -12px;
+    left: -8px;
+    border-width: 0 10px 12px 10px;
+    border-color: transparent transparent #ffffff transparent;
+}
+
+.bottom-arrow {
+    bottom: -12px;
+    left: -8px;
+    border-width: 12px 10px 0 10px;
+    border-color: #ffffff transparent transparent transparent;
+}
+
+.axis-label {
+    position: absolute;
+    font-weight: bold;
+    font-size: 1.2em;
+    white-space: nowrap;
+}
+
+.x-label-left {
+    bottom: 50%;
+    left: -30px;
+    transform: translateY(50%);
+}
+
+.x-label-right {
+    bottom: 50%;
+    right: -30px;
+    transform: translateY(50%);
+}
+
+.y-label-top {
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.y-label-bottom {
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.project-item {
+    position: absolute;
+    font-size: 18px;
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.project-item img {
+    width: 90%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.3s ease;
+}
+
+.project-item:hover {
+    transform: scale(1.1);
+}
+
+.project-item:hover img {
+    transform: scale(1.1);
+}
+
+.project-item a {
+    display: block;
+    margin-top: 10px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.taxo_tree img {
+    width: auto; 
+    height: auto; 
+    max-width: 100px;
+    max-height: 100px;
+    display: block; 
+    margin: 0 auto; 
+}

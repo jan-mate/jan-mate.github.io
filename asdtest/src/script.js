@@ -15,8 +15,6 @@ new Vue({
         ],
         responses: Array(10).fill(null),
         additional: {
-            gender: '',
-            family_history_PDD: '',
             relation: ''
         },
         prediction: "",
@@ -53,14 +51,15 @@ new Vue({
                 }
                 return 0;
             });
-            const gender = parseInt(this.additional.gender) || 0;
-            const family_history_PDD = parseInt(this.additional.family_history_PDD) || 0;
+
+            // **Only include 'relation' as it's the remaining additional feature**
             const relation = parseInt(this.additional.relation) || 0;
-            return [...encodedResponses, gender, family_history_PDD, relation];
+
+            return [...encodedResponses, relation];
         },
         predict() {
-            if (this.responses.includes(null)) {
-                this.prediction = "You need to answer all questions";
+            if (this.responses.includes(null) || this.additional.relation === '') {
+                this.prediction = "You need to answer all questions.";
                 this.confidence = "";
                 return;
             }

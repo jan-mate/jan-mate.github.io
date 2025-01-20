@@ -3,83 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mat's Website</title>
-
-    
-    <link rel="shortcut icon" href="favicon.ico" />
-    
-
+    <title>My Website</title>
+    <link rel="shortcut icon" href="favicon.svg"/>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="src/style.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
-    <header class="text-center py-4">
-        <h1>Hi, I'm Mat</h1>
-        <p id="summary">I'm a <span id="age"></span> ML and Data Science student</p>
+    <header>
+        <h1>Stuff I've Made</h1>
     </header>
-
-    <main class="container text-center mt-3">
-        <p>My favorite flag is <a href="https://en.wikipedia.org/wiki/Flag_of_Estonia">
-            <img src="ee.png" alt="Favorite Flag" class="flag-image">
-        </a>
-        </p>
-
-        <p>My favorite train is <a href="https://maps.google.com/?q=32.82881,13.11156" class="blue-link" target="_blank">this one</a></p>
-        
-        <p>My favorite color is <strong>
-            <a href="https://en.wikipedia.org/wiki/Red" style="color: red; font-size: 35px; letter-spacing: -5px;"><span>R</span></a>
-            <a href="https://en.wikipedia.org/wiki/Orange_(colour)" style="color: orange; font-size: 35px; letter-spacing: -5px;"><span>A</span></a>
-            <a href="https://en.wikipedia.org/wiki/Yellow" style="color: yellow; font-size: 35px; letter-spacing: -5px;"><span>I</span></a>
-            <a href="https://en.wikipedia.org/wiki/Green" style="color: green; font-size: 35px; letter-spacing: -5px;"><span>N</span></a>
-            <a href="https://en.wikipedia.org/wiki/Blue" style="color: blue; font-size: 35px; letter-spacing: -5px;"><span>B</span></a>
-            <a href="https://en.wikipedia.org/wiki/Violet_(color)" style="color: indigo; font-size: 35px; letter-spacing: -5px;"><span>O</span></a>
-            <a href="https://en.wikipedia.org/wiki/Red" style="color: red; font-size: 35px; letter-spacing: -5px;"><span>W</span></a>
-        </strong></p>
-        
-        
-        <p>My favorite food is <a href="https://en.wikipedia.org/wiki/Mango" target="_blank">Mangifera indica</a> (<a href="https://en.wikipedia.org/wiki/Tommy_Atkins_(mango)" target="_blank">Tommy Atkins</a>) <a href="https://en.wikipedia.org/wiki/Mango" target="_blank">🥭</a></p>
-       
-        <p>My favorite loaf is this one <a href=" https://mle-s-paint.neocities.org/themovement">
-            <img src="loaf.png" alt="loaf" class="loaf-image">
-        </a>
-        </p>
-
-
-        <section class="stuff-ive-made mt-5">
-            <h2>Stuff I've Made</h2>
-            <div class="random-projects">
-                <!-- Journalize Logo and Project Link -->
-                <div class="project-item journalize" style="top: 10%; left: 35%;">
-                    <a href="https://github.com/jan-mate/journalize" target="_blank" class="project-link">
-                        <img src="journalize_white_logo.png" alt="Journalize Logo" class="project-logo">
-                        <span>Journalize</span>
-                    </a>
-                </div>
-
-                <div class="project-item journalize" style="top: 30.0%; left: 69%;">
-                    <a href="https://www.youtube.com/@Safi_beats" target="_blank" class="project-link">
-                        <img src="safi_beats.webp" alt="Safi_beats_logo" class="project-logo" style="width: 100px; height: 100px; border-radius: 50%;">
-                        <span>Safi beats</span>
-                    </a>
-                </div>
-                
-                <div class="project-item" style="top: 49.0%; left: 15%;">
-                        <a href="/birthday" class="project-link">Birthday Math</a>
-                    </div>
-                    
-                <div class="project-item" style="top: 69%; left: 40%;">
-                    <a href="/spacer" class="project-link">S P A C E R</a>
-                </div>
-
-                <div class="project-item" style="top: 89%; left: 60%;">
-                    <a href="/asdtest" class="project-link">ASD test</a>
-                </div>
-                
+    <main>
+        <div class="plot-container">
+            <div class="axis-x">
+                <div class="arrow left-arrow"></div>
+                <div class="arrow right-arrow"></div>
             </div>
-        </section>
-        
+            <div class="axis-y">
+                <div class="arrow top-arrow"></div>
+                <div class="arrow bottom-arrow"></div>
+            </div>
+            <div class="axis-label x-label-left">Cringe</div>
+            <div class="axis-label x-label-right">Based</div>
+            <div class="axis-label y-label-top">Professional</div>
+            <div class="axis-label y-label-bottom">Unprofesional</div>
+            <div class="project-item" style="top: 5%; left: 40%;">
+                <a href="https://github.com/jan-mate/journalize" target="_blank">
+                    <img src="journalize_white_logo.png" alt="Journalize Logo">
+                    <span>Journalize</span>
+                </a>
+            </div>
+            <div class="project-item" style="top: 30%; left: 55%;">
+                <a href="https://www.youtube.com/@Safi_beats" target="_blank">
+                    <img src="safi_beats.webp" alt="Safi_beats_logo" style="width: 100px; height: 100px; border-radius: 50%;">
+                    <span>Safi beats</span>
+                </a>
+            </div>
+            <div class="project-item" style="top: 85%; left: 20%;">
+                <a href="/birthday/">Birthday Math</a>
+            </div>
+            <div class="project-item" style="top: 30%; left: 15%;">
+                <a href="/spacer/">S P A C E R</a>
+            </div>
+            <div class="project-item" style="top: 40%; left: 25%;">
+                <a href="/asdtest/">ASD test</a>
+            </div>
+            <div class="project-item taxo_tree" style="top: 60%; left: 85%;">
+                <a href="/trees/" target="_blank">
+                    <img src="wiki_taxo_trees.png" alt="wiki_taxo_trees">
+                </a>
+            </div>            
+        </div>
     </main>
-
-    <script src="src/main.js"></script>
 </body>
 </html>

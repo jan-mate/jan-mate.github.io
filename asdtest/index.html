@@ -6,7 +6,7 @@
     <title>ASD Test</title>
     
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-    <link href="src/styles.css" rel="stylesheet">
+    <link href="./src/styles.css" rel="stylesheet">
     <style>
         .wrapper {
             max-width: 800px;
@@ -82,32 +82,6 @@
                 </tr>
 
                 <tr>
-                    <td class="question-text">11. Please select your gender:</td>
-                    <td colspan="2">
-                        <label class="left-aligned-checkbox-container">
-                            <input type="radio" name="gender" value="0" v-model="additional.gender">
-                            <span class="checkmark"></span> Female
-                        </label>
-                        <label class="left-aligned-checkbox-container">
-                            <input type="radio" name="gender" value="1" v-model="additional.gender">
-                            <span class="checkmark"></span> Male
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="question-text">12. Do you have a family history of PDD?</td>
-                    <td colspan="2">
-                        <label class="left-aligned-checkbox-container">
-                            <input type="radio" name="family_history_PDD" value="1" v-model="additional.family_history_PDD">
-                            <span class="checkmark"></span> Yes
-                        </label>
-                        <label class="left-aligned-checkbox-container">
-                            <input type="radio" name="family_history_PDD" value="0" v-model="additional.family_history_PDD">
-                            <span class="checkmark"></span> No
-                        </label>
-                    </td>
-                </tr>
-                <tr>
                     <td class="question-text">13. What is your relation?</td>
                     <td colspan="2">
                         <label class="left-aligned-checkbox-container">
@@ -143,22 +117,19 @@
         </div>
     </div>
 
-
-    
-
 <div class="additional-info">
     <h2>Is this trustworthy?</h2>
     <p>
         The purpose of this tool is to provide initial guidance but should not replace professional diagnosis.
         The model is a simple logistic regression model trained using SK-learn's default params. It does about as well as a more advanced (convolutional) neural network, which seem to be the state-of-the-art according to this 
         <a href="https://www.sciencedirect.com/science/article/pii/S1877050920308656" target="_blank">paper</a>.
-        On the test set, it had 96.69% accuracy, and 96% F1-score. It's trained on 
+        On the test set (n=121), it had 98.3% accuracy, and 98.0% F1-score. It's trained on 
         <a href="https://archive.ics.uci.edu/dataset/426/autism+screening+adult" target="_blank">this dataset</a> from the UCI Machine Learning Repository.
     </p>
     
     <h2>Is this safe?</h2>
     <p>
-        Yes. Unlike other online tests, this one doesn’t gather your data. Don’t trust me? You can read the <a href="https://github.com/jan-mate/jan-mate.github.io" target="_blank">source code</a>.
+        Yes. Unlike other online tests, this one doesn’t gather and sell your data. Don’t trust me? You can read the <a href="https://github.com/jan-mate/jan-mate.github.io" target="_blank">source code</a>.
     </p>
     
     <h2>Why does this exist?</h2>
@@ -169,25 +140,6 @@
         </ol>
     </p>
     
-
-    <div class="additional-info">
-        <h2>What is your favorite squirrel ASCII art?</h2>
-        <p>This one by <a href="https://ascii.co.uk/art/squirrel" target="_blank">jgs</a>:</p>
-        <pre>
-                                      _
-                                  .-'` `}
-                          _./)   /       }
-                        .'o   \ |       }
-                        '.___.'`.\    {`
-                        /`\_/  , `.    }
-                        \=' .-'   _`\  {
-                         `'`;/      `,  }
-                            _\       ;  }
-                           /__`;-...'--'
-        </pre>
-    </div>
-    
-
 
     <script src="src/script.js"></script>
 </body>

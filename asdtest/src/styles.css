@@ -193,3 +193,5 @@ a {
 a:visited {
     color: #d3d3d3;
 }
+
+/* Optional: Remove any unused styles related to the removed sections */

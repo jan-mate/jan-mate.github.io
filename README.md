@@ -1,1 +1,3 @@
-# theres nothing here yet, stop looking
+# My Personal Website
+
+[Go to kochjar.me to view it](https://kochjar.me)
