@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Tier List — Finished</title>
+</head>
+<body>
+  <main class="wrap">
+    <section class="tiers">
+      <div class="tier" data-tier="S"><div class="tier-label s" data-name="Exceptional">S</div><div class="tier-items" data-target="S"></div></div>
+      <div class="tier" data-tier="A"><div class="tier-label a" data-name="Excellent">A</div><div class="tier-items" data-target="A"></div></div>
+      <div class="tier" data-tier="B"><div class="tier-label b" data-name="Very Good">B</div><div class="tier-items" data-target="B"></div></div>
+      <div class="tier" data-tier="C"><div class="tier-label c" data-name="Good">C</div><div class="tier-items" data-target="C"></div></div>
+      <div class="tier" data-tier="D"><div class="tier-label d" data-name="Fair">D</div><div class="tier-items" data-target="D"></div></div>
+      <div class="tier" data-tier="E"><div class="tier-label e" data-name="OK">E</div><div class="tier-items" data-target="E"></div></div>
+      <div class="tier" data-tier="F"><div class="tier-label f" data-name="Bad">F</div><div class="tier-items" data-target="F"></div></div>
+    </section>
+  </main>
+
+  <!-- Tiny, hidden file input for fallback (triggered by script if needed) -->
+  <input id="txtFile" type="file" accept=".txt,text/plain" hidden />
+
+  <!-- Non-intrusive notice line shown only when needed -->
+  <div class="notice" id="notice" hidden></div>
+
+  <script src="code.js"></script>
+</body>
+</html>
