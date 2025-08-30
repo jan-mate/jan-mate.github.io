@@ -1,39 +1,8 @@
-// build.js
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
-const MarkdownIt = require('markdown-it');
-const mdAttrs = require('markdown-it-attrs');
-
-const IN_DIR = process.env.BLOG_IN_DIR || 'blog';
-const OUT_DIR = process.env.BLOG_OUT_DIR || 'blog';
-
-const inDir = path.resolve(IN_DIR);
-const outDir = path.resolve(OUT_DIR);
-fs.mkdirSync(outDir, { recursive: true });
-
-if (!fs.existsSync(inDir)) {
-  console.error(`Missing folder: ${IN_DIR}. Create it and put .md files inside.`);
-  process.exit(1);
-}
-
-// Markdown config: plain MD + class/attrs on images
-const md = new MarkdownIt({
-  html: false,
-  linkify: true,
-  typographer: false
-}).use(mdAttrs, { allowedAttributes: ['id','class','width','height','style'] });
-
-const htmlEscape = (s) =>
-  s.replace(/&/g, '&amp;').replace(/</g, '&lt;')
-   .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-
-const layout = (title, bodyHtml) => `<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>${htmlEscape(title)}</title>
+<title>Safi Beats</title>
 <link rel="icon" href="/favicon.svg" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
 <style>
@@ -73,7 +42,18 @@ img,video{max-width:100%;height:auto;display:block;margin:1em auto} /* default c
 </head><body>
 <a class="home" href="/">Home</a>
 <main><article>
-${bodyHtml}
+<h1>Safi Beats</h1>
+<p>Safi Beats is an &quot;automatic&quot; AI Lofi <a href="https://www.youtube.com/@Safi_beats">YouTube channel</a>.</p>
+<p>It worked by using an <a href="https://github.com/gcui-art/suno-api">unofficial suno-api</a> to genertae music. Stability Diffusion 3 to generate images and then automatically uploaded them to YouTube.</p>
+<p>This was one the least fun project I've made. But I learned a valuable lesson:</p>
+<blockquote>
+<p><em>Don't try to build something, when someone is trying to break it</em></p>
+</blockquote>
+<p>I had issues with both Suno and YouTube.
+Suno kept shadowbanning my accounts so they couldn't generate music.
+But worst of all, YouTube kept invalidating my API key, so I had to manually get a new one every few days (instead of every month). Maybe the solution would be using unoffical YT API (or making one myself).</p>
+<p>But atleast YouTube recommended my videos to many people, eventho nobody liked watching them.</p>
+
 </article></main>
 
 <!-- KaTeX (client-side auto-render) -->
@@ -85,28 +65,12 @@ ${bodyHtml}
       delimiters: [
         {left: '$$', right: '$$', display: true},
         {left: '$',  right: '$',  display: false},
-        {left: '\\\\[', right: '\\\\]', display: true},
-        {left: '\\\\(', right: '\\\\)', display: false}
+        {left: '\\[', right: '\\]', display: true},
+        {left: '\\(', right: '\\)', display: false}
       ],
       ignoredTags: ['script','noscript','style','textarea','pre','code'],
       throwOnError: false
     });
   });
 </script>
-</body></html>`;
-
-const slugify = (s) =>
-  s.toLowerCase().replace(/[^\w\s-]/g, '').trim().replace(/\s+/g, '-');
-
-const files = fs.readdirSync(inDir).filter(f => f.toLowerCase().endsWith('.md'));
-console.log(`Found ${files.length} markdown file(s) in ${IN_DIR}`);
-
-for (const file of files) {
-  const src = fs.readFileSync(path.join(inDir, file), 'utf8');
-  const m = src.match(/^#\s+(.+)$/m); // first H1 becomes title + slug
-  const title = m ? m[1].trim() : file.replace(/\.[^.]+$/, '');
-  const html = md.render(src);
-  const outName = slugify(title) + '.html';
-  fs.writeFileSync(path.join(outDir, outName), layout(title, html));
-  console.log(`→ Wrote ${OUT_DIR}/${outName}`);
-}
+</body></html>

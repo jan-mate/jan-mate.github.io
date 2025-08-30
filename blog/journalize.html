@@ -8,7 +8,8 @@
 <style>
 :root{--bg:#0b0c0f;--text:#e9e9ef;--muted:#b7b7c5;--ring-soft:rgba(255,255,255,.12);--max:780px;--pad:20px;--lh:1.6}
 *{box-sizing:border-box} html,body{height:100%}
-body{margin:0;background:var(--bg);color:var(--text);font:16px/var(--lh) ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial;color-scheme:dark}
+html{font-size:20px} 
+body{margin:0;background:var(--bg);color:var(--text);font:1rem/var(--lh) ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,Cantarell,"Noto Sans",Arial;color-scheme:dark}
 .home{position:fixed;top:14px;left:14px;z-index:10;color:var(--text);text-decoration:none;font-size:.95rem}
 .home:hover,.home:focus-visible{text-decoration:underline}
 main{min-height:100svh;display:grid;place-items:start center;padding:calc(var(--pad) + 24px) var(--pad)}
@@ -42,23 +43,29 @@ img,video{max-width:100%;height:auto;display:block;margin:1em auto} /* default c
 <a class="home" href="/">Home</a>
 <main><article>
 <h1>Journalize</h1>
-<p>Left-aligned, 50% width:
-<img src="./journalize.png" alt="Journalize logo (left 50%)" class="img-left w-50"></p>
-<p>Centered, fixed 300px:
-<img src="./journalize.png" alt="Journalize logo (center 300px)" class="img-center w-300px"></p>
-<p>Right-aligned, 66% width:
-<img src="./journalize.png" alt="Journalize logo (right 66%)" class="img-right w-66"></p>
-<p>Small notes on building the Journalize prototype.</p>
+<p>I read about the benefits of journalling:</p>
 <ul>
-<li>OAuth quirks</li>
-<li>Branding ideas</li>
-<li>Next steps</li>
+<li>Stress ↓</li>
+<li>Mood/well-being ↑</li>
+<li>Depressive symptoms ↓</li>
+<li>Working memory ↑</li>
+<li>Test performance ↑</li>
+<li>Sleep onset faster</li>
+<li>Physical symptoms ↓</li>
+<li>Optimism ↑</li>
+<li>Health-care visits ↓</li>
+<li>Amygdala response ↓</li>
 </ul>
-<p>Inline math: $x^{2}$ and $e^{i\pi} + 1 = 0$.</p>
-<p>Block math:</p>
-<p>$$
-\int_{0}^{\infty} e^{-x^{2}} , dx = \frac{\sqrt{\pi}}{2}
-$$</p>
+<p>They're most likely overexagerated, but there does seem to be some science behind them. Either way, if only 25% of the beneifts are real that's still great. So I wanted to try it out.
+But carrying around a paper journal is cumbersome and the search function is horrible.
+So I wanted something digital, but every app I found was lacking features or was way too slow to use. Why does Obsidian take 14seconds to open!?</p>
+<p>Journlize was my attempt at solving this issue. I would say it was succusful because I've been using the app for over a year now.
+The design philosophy of Journalize is about being fast to quickly write down thoughts, unlike seemingly every other app which is (I assume) about being nicely organized, intuitive and pretty.
+But I find organization of notes/thoughts to be mostly a waste of time because searching is so fast. Intuitive app design is important, but not when making a personal app. And I know most ppl think Journalize is ugly, but I love how it looks! Colors are overrated, don't get me wrong, rainbow is my fav color, but colors in a journalling app would mostly just be distracting.</p>
+<p>Since I liked the app, I thought others might too, so I added personalization options and published it on F-droid. This was about 4× as much work as just making the app for myself. And also there's pressure from people wanting features/bug fixes.</p>
+<p>I still haven't determined if this was a mistake.
+Because I liked having helped (I would estimate 150) people.
+But I spend a lot of time making the app work for others.</p>
 
 </article></main>
 
