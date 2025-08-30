@@ -1,58 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
-    <link rel="shortcut icon" href="favicon.svg"/>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects</title>
+  <link rel="shortcut icon" href="favicon.svg" />
+  <link href="style.css" rel="stylesheet" />
+  <script defer src="masonry.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Stuff I've Made</h1>
-    </header>
-    <main>
-        <div class="plot-container">
-            <div class="axis-x">
-                <div class="arrow left-arrow"></div>
-                <div class="arrow right-arrow"></div>
-            </div>
-            <div class="axis-y">
-                <div class="arrow top-arrow"></div>
-                <div class="arrow bottom-arrow"></div>
-            </div>
-            <div class="axis-label x-label-left">Cringe</div>
-            <div class="axis-label x-label-right">Based</div>
-            <div class="axis-label y-label-top">Professional</div>
-            <div class="axis-label y-label-bottom">Unprofesional</div>
-            <div class="project-item" style="top: 5%; left: 40%;">
-                <a href="https://github.com/jan-mate/journalize" target="_blank">
-                    <img src="journalize_white_logo.png" alt="Journalize Logo">
-                    <span>Journalize</span>
-                </a>
-            </div>
-            <div class="project-item" style="top: 30%; left: 55%;">
-                <a href="https://www.youtube.com/@Safi_beats" target="_blank">
-                    <img src="safi_beats.webp" alt="Safi_beats_logo" style="width: 100px; height: 100px; border-radius: 50%;">
-                    <span>Safi beats</span>
-                </a>
-            </div>
-            <div class="project-item" style="top: 85%; left: 20%;">
-                <a href="/birthday/">Birthday Math</a>
-            </div>
-            <div class="project-item" style="top: 30%; left: 15%;">
-                <a href="/spacer/">S P A C E R</a>
-            </div>
-            <div class="project-item" style="top: 40%; left: 25%;">
-                <a href="/asdtest/">ASD test</a>
-            </div>
-            <div class="project-item taxo_tree" style="top: 60%; left: 85%;">
-                <a href="/trees/" target="_blank">
-                    <img src="wiki_taxo_trees.png" alt="wiki_taxo_trees">
-                </a>
-            </div>            
+  <main class="wrap">
+    <ul id="projects" class="grid">
+      <li class="card">
+        <div class="card-content">
+          <div class="thumb u-imgw-60 u-padx-24">
+            <img src="journalize_white_logo.png" alt="Journalize">
+          </div>
+          <div class="card-body">
+            <h2 class="title">Journalize</h2>
+            <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere risus vitae consectetur faucibus.</p>
+          </div>
         </div>
-    </main>
+        <a class="whole-link" href="https://github.com/jan-mate/journalize" aria-label="Open Journalize"></a>
+        <a class="note-link" href="/blog/journalize" aria-label="Blog for Journalize">
+          <!-- inline, mono SVG (inherits currentColor) -->
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <rect x="5" y="4" width="14" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+            <line x1="8" y1="9" x2="16" y2="9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="8" y1="13" x2="14" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="8" y1="17" x2="12" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span>Blog</span>
+        </a>
+      </li>
+
+      <li class="card">
+        <div class="card-content">
+          <div class="thumb">
+            <img src="safi_beats.webp" alt="Safi beats">
+          </div>
+          <div class="card-body">
+            <h2 class="title">Safi beats</h2>
+            <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus augue libero dictum.</p>
+          </div>
+        </div>
+        <a class="whole-link" href="https://www.youtube.com/@Safi_beats" aria-label="Open Safi beats"></a>
+      </li>
+
+      <li class="card">
+        <div class="card-content">
+          <div class="card-body">
+            <h2 class="title">Birthday Math</h2>
+            <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a finibus quam. Sed in arcu ac nisi euismod.</p>
+          </div>
+        </div>
+        <a class="whole-link" href="/birthday/" aria-label="Open Birthday Math"></a>
+        <a class="note-link" href="/blog/birthday-math" aria-label="Blog for Birthday Math">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <rect x="5" y="4" width="14" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+            <line x1="8" y1="9" x2="16" y2="9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="8" y1="13" x2="14" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="8" y1="17" x2="12" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span>Blog</span>
+        </a>
+      </li>
+
+      <li class="card">
+        <div class="card-content">
+          <div class="card-body">
+            <h2 class="title">S P A C E R</h2>
+            <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae sapien id nunc pulvinar vehicula.</p>
+          </div>
+        </div>
+        <a class="whole-link" href="/spacer/"></a>
+      </li>
+
+      <li class="card">
+        <div class="card-content">
+          <div class="card-body">
+            <h2 class="title">ASD test</h2>
+            <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet diam ut velit luctus ultricies.</p>
+          </div>
+        </div>
+        <a class="whole-link" href="/asdtest/"></a>
+      </li>
+
+      <li class="card">
+        <div class="card-content">
+          <div class="thumb">
+            <img src="wiki_taxo_trees.png" alt="Wiki Taxo Trees">
+          </div>
+          <div class="card-body">
+            <h2 class="title">Wiki Taxo Trees</h2>
+            <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus.</p>
+          </div>
+        </div>
+        <a class="whole-link" href="/trees/"></a>
+      </li>
+    </ul>
+  </main>
 </body>
 </html>
