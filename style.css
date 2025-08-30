@@ -59,27 +59,28 @@
   
   .card-content { display: block }
   
-  /* thumb defaults */
   .thumb {
     --img-max-w: none;
     --pad-x: 0px;
+    --pad-y: 0px;
     width: 100%;
     background: #0f1016;
     padding-left: var(--pad-x);
     padding-right: var(--pad-x);
+    padding-top: var(--pad-y); 
+    padding-bottom: var(--pad-y);
   }
   
-  /* image scales up to container, capped by utilities */
+  
   .thumb img {
     display: block;
     width: 100%;
     max-width: var(--img-max-w);
-    height: auto;
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
   }
   
-  /* utilities (set the cap) */
   .u-imgw-40 { --img-max-w: 40% }
   .u-imgw-50 { --img-max-w: 50% }
   .u-imgw-60 { --img-max-w: 60% }
@@ -92,11 +93,18 @@
   .u-padx-16 { --pad-x: 16px }
   .u-padx-24 { --pad-x: 24px }
   .u-padx-32 { --pad-x: 32px }
+
+  .u-pady-6  { --pad-y: 6px }
+  .u-pady-12 { --pad-y: 12px }
+  .u-pady-16 { --pad-y: 16px }
+  .u-pady-24 { --pad-y: 24px }
+  .u-pady-32 { --pad-y: 32px }
   
   .thumb--padded-lg { padding: 24px }
   .thumb--logo img { max-width: 70%; margin: 0 auto }
   
-  .card-body { padding: 16px 18px 40px }
+  .card-body { padding: 16px 18px 18px; }
+  .card:has(.note-link) .card-body { padding-bottom: 36px; }
   .title { margin: 0 0 6px; font-size: clamp(18px, 2.6vw, 22px); line-height: 1.2 }
   .desc { margin: 0; color: var(--muted); font-size: 0.975rem }
   
