@@ -1,0 +1,11 @@
+{
+    "name": "mini-blog",
+    "private": true,
+    "scripts": {
+      "build:blog": "node build.js"
+    },
+    "dependencies": {
+      "markdown-it": "^14.1.0"
+    }
+  }
+  
