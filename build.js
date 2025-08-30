@@ -4,6 +4,7 @@
 const fs = require('fs');
 const path = require('path');
 const MarkdownIt = require('markdown-it');
+const mdAttrs = require('markdown-it-attrs');
 
 const IN_DIR = process.env.BLOG_IN_DIR || 'blogs';
 const OUT_DIR = process.env.BLOG_OUT_DIR || 'blogs';
@@ -17,12 +18,12 @@ if (!fs.existsSync(inDir)) {
   process.exit(1);
 }
 
-// Keep markdown simple; let KaTeX handle math client-side
+// Markdown config: plain MD + class/attrs on images
 const md = new MarkdownIt({
   html: false,
   linkify: true,
   typographer: false
-});
+}).use(mdAttrs, { allowedAttributes: ['id','class','width','height','style'] });
 
 const htmlEscape = (s) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;')
@@ -52,8 +53,18 @@ article hr{border:none;border-top:1px solid var(--ring-soft);margin:2em 0}
 article code{background:rgba(255,255,255,.06);padding:.2em .4em;border-radius:6px}
 pre{background:rgba(255,255,255,.06);padding:14px;border-radius:12px;overflow:auto}
 pre code{background:none;padding:0}
-img,video{max-width:100%;height:auto;display:block;margin:1em auto}
-blockquote{border-left:3px solid var(--ring-soft);padding-left:12px;color:var(--muted)}
+img,video{max-width:100%;height:auto;display:block;margin:1em auto} /* default center via auto margins */
+
+/* image alignment + sizing utilities */
+.img-left   { margin-left: 0;    margin-right: auto; }
+.img-center { margin-left: auto; margin-right: auto; }
+.img-right  { margin-left: auto; margin-right: 0; }
+
+.w-25{width:25%} .w-33{width:33%} .w-50{width:50%}
+.w-66{width:66%} .w-75{width:75%} .w-100{width:100%}
+.w-200px{width:200px} .w-300px{width:300px} .w-400px{width:400px}
+.max-w-600{max-width:600px} .max-w-800{max-width:800px}
+
 /* KaTeX minor tweaks */
 .katex { font-size:1.05em }
 .katex-display { margin:1em 0; text-align:left }
