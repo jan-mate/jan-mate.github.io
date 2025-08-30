@@ -2,10 +2,10 @@
     "name": "mini-blog",
     "private": true,
     "scripts": {
-      "build:blog": "node build.js"
+        "build:blog": "node build.js"
     },
     "dependencies": {
-      "markdown-it": "^14.1.0"
+        "markdown-it": "^14.1.0",
+        "markdown-it-katex": "^2.0.3"
     }
-  }
-  
+}
