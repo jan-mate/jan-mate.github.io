@@ -58,8 +58,8 @@ h1 {
 }
 
 .field.narrow {
-    flex: 0 0 120px;
-    min-width: 120px;
+    flex: 0 0 128px;
+    min-width: 128px;
 }
 
 label {
