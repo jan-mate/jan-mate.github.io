@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallery</title>
+  <link href="style.css" rel="stylesheet" />
+  <script defer src="masonry.js"></script>
+</head>
+<body>
+  <main class="wrap">
+    
+    <header class="gallery-header">
+      <h1>Gallery</h1>
+      <p>fav pics/vids ive taken. all on my phone, mostly 1+5T and 1+9Pro</p>
+    </header>
+    <ul id="gallery" class="grid">
+            <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/1.webp" alt="Gallery Image 1">
+          <div class="card-body"><h2 class="title">sunrise clouds in the river</h2></div>
+          <div class="desc" style="display: none;">this is the only sunrise pics, all others are sunsets</div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/2.webp" alt="Gallery Image 2">
+          <div class="card-body">
+            <span class="reflect">
+            <h2 class="title">forest</h2></span>
+          </div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/3.webp" alt="Gallery Image 3">
+          <div class="card-body"><h2 class="title">this picture isn't upside down</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/4.webp" alt="Gallery Image 4">
+          <div class="card-body"><h2 class="title">*✩‧₊˚༺ magical path ༻*✩‧₊˚</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/5.webp" alt="Gallery Image 5">
+          <div class="card-body"><h2 class="title">Møns klint</h2></div>
+          <div class="desc" style="display: none;">i think this is the prettiest place in denmark</div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/6.webp" alt="Gallery Image 6">
+          <div class="card-body"><h2 class="title">Møns klit</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/7.webp" alt="Gallery Image 7">
+          <div class="card-body"><h2 class="title">rock at Møn's klint</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/8.webp" alt="Gallery Image 8">
+          <div class="card-body"><h2 class="title">cute succulent plant</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/9.webp" alt="Gallery Image 9">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/10.webp" alt="Gallery Image 10">
+          <div class="card-body"><h2 class="title">cool insect</h2></div>
+          <div class="desc" style="display: none;">
+            pretty sure its <a href="https://en.wikipedia.org/wiki/Rosalia_longicorn" target="_blank">Rosalia longicorn</a>, those colors actually work as camoflauge on Beech trees, which sounds like bs, but have u ever seen an alpine longhorn beetle on a beech tree? No, me neither. </div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/11.webp" alt="Gallery Image 11">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/12.webp" alt="Gallery Image 12">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/13.webp" alt="Gallery Image 13">
+          <div class="card-body"><h2 class="title">train + citylights in Praha</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/14.webp" alt="Gallery Image 14">
+          <div class="card-body"><h2 class="title">black Eurasian red squirrel 🐿</h2></div>
+          <div class="desc" style="display: none;">fisrt time i spotted a black variant. i think they're even cooler than the red ones. even better spotted in a botanical garden =)</div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/15.webp" alt="Gallery Image 15">
+          <div class="card-body"><h2 class="title">hazey</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/16.webp" alt="Gallery Image 16">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/17.webp" alt="Gallery Image 17">
+          <div class="card-body"><h2 class="title">sunset + frozen trees made everything mildly pink</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/18.webp" alt="Gallery Image 18">
+          <div class="card-body"><h2 class="title">sunset on sea of clouds</h2></div>
+          <div class="desc" style="display: none;">this is my favorite photo i think</div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/19.webp" alt="Gallery Image 19">
+          <div class="card-body"><h2 class="title">sunset on sea of clouds</h2></div>
+          <div class="desc" style="display: none;">clouds from abv are amazing</div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/20.webp" alt="Gallery Image 20">
+          <div class="card-body"><h2 class="title">sunset on sea of clouds</h2></div>
+          <div class="desc" style="display: none;">irl u could see more stars, even prettier :)</div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/21.webp" alt="Gallery Image 21">
+          <div class="card-body"><h2 class="title">squirrel on dogwood</h2></div>
+          <div class="desc" style="display: none;">Cornus mas i think</div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/22.webp" alt="Gallery Image 22">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/23.webp" alt="Gallery Image 23">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <video src="images/25.mp4" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+          <div class="card-body"><h2 class="title">swan with its swanlings</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/26.webp" alt="Gallery Image 26">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/27.webp" alt="Gallery Image 27">
+          <div class="card-body"><h2 class="title">Hedera helix is pretty</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <video src="images/28.mp4" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;">first time i touched a red squirrel!! im lucky the branch was there cuz squirrel lost balance</div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <video src="images/29.mp4" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+          <div class="card-body"><h2 class="title">cute eating</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/30.webp" alt="Gallery Image 30">
+          <div class="card-body"><h2 class="title">geuss what this is</h2></div>
+          <div class="desc" style="display: none;">its a watertower. most dumb shape to hold water i know right? but i kinda like it, i usually hate brutalist architecture and generally architecture isnt pretty but this made me feel awe</div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/31.webp" alt="Gallery Image 31">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/32.webp" alt="Gallery Image 32">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/33.webp" alt="Gallery Image 33">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/34.webp" alt="Gallery Image 34">
+          <div class="card-body"><h2 class="title">mysteriusly cold place</h2></div>
+          <div class="desc" style="display: none;">during summer this patch of forest is ≈12°C colder than sorrunding forage, this is why trees dont grow here, infact the plants that grow are usually found at much higher elevations. theres many holes in the ground with ≈6°C air streaming out. idk what this could be, but maybe theres a "cave" underneath? or just airy limestone (theres a lot of limestone around this area, i love limestone), interestingly this is a slope, not a bowl where coldness usually accumilates</div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/35.webp" alt="Gallery Image 35">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/36.webp" alt="Gallery Image 36">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/37.webp" alt="Gallery Image 37">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <video src="images/38.mp4" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+          <div class="card-body"><h2 class="title">cutest feeling ive felt</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/39.webp" alt="Gallery Image 39">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/40.webp" alt="Gallery Image 40">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;">i like the color contrast with the yellow grass, green hills, white clouds, blue sky</div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/41.webp" alt="Gallery Image 41">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <video src="images/42.mp4" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+          <div class="card-body"><h2 class="title">close up squirrel eating</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <video src="images/43.mp4" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+          <div class="card-body"><h2 class="title">petting a squirrel</h2></div>
+          <div class="desc" style="display: none;">my first time !!</div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/44.webp" alt="Gallery Image 44">
+          <div class="card-body"><h2 class="title">deep river valley</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/45.webp" alt="Gallery Image 45">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;">im not sure if the rock ruins the view or makes it better</div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <video src="images/46.mp4" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+          <div class="card-body"><h2 class="title">squirrel fishing</h2></div>
+          <div class="desc" style="display: none;">this is my favorite video. no it doesnt hurt the squirrel, thx for worrying tho</div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/47.webp" alt="Gallery Image 47">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/48.webp" alt="Gallery Image 48">
+          <div class="card-body"><h2 class="title">squirrel (marmot) on a rock</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/49.webp" alt="Gallery Image 49">
+          <div class="card-body"><h2 class="title">pretty ridge</h2></div>
+          <div class="desc" style="display: none;">best types of hikes</div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/50.webp" alt="Gallery Image 50">
+          <div class="card-body"><h2 class="title">2 marmots (squirrels)</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/51.webp" alt="Gallery Image 51">
+          <div class="card-body"><h2 class="title">god rays with pretty view</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/52.webp" alt="Gallery Image 52">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/53.webp" alt="Gallery Image 53">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/54.webp" alt="Gallery Image 54">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/55.webp" alt="Gallery Image 55">
+          <div class="card-body"><h2 class="title">many types of clouds</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/56.webp" alt="Gallery Image 56">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/57.webp" alt="Gallery Image 57">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <video src="images/58.mp4" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+          <div class="card-body"><h2 class="title">cute</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/60.webp" alt="Gallery Image 60">
+          <div class="card-body"><h2 class="title">reed is one of the prettiest grasses</h2></div>
+          <div class="desc" style="display: none;">and grasses are all very pretty</div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/61.webp" alt="Gallery Image 61">
+          <div class="card-body"><h2 class="title">sun through a willow tree</h2></div>
+          <div class="desc" style="display: none;">i was thinking that most my pictures are very ugly cuz i never try to make pretty pictures, i just make them for memories, but i thought it be fun to try doing photography photography, 20sec later i find this nice tree/angle, i think this pic has a nice vibe. reminds me of the album art for the sadness // abriction album. it contains <a href="https://youtu.be/Z65SDpWUkz4?si=xapxY_WoZv5rdeaa">my fav song of 2025</a></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/63.webp" alt="Gallery Image 63">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/64.webp" alt="Gallery Image 64">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/65.webp" alt="Gallery Image 65">
+          <div class="card-body"><h2 class="title">dahlia clipping the red channel</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/66.webp" alt="Gallery Image 66">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/67.webp" alt="Gallery Image 67">
+          <div class="card-body"><h2 class="title">buttomless abyss</h2></div>
+          <div class="desc" style="display: none;">cliff so steep and so foggy u cant see the buttom</div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/68.webp" alt="Gallery Image 68">
+          <div class="card-body"><h2 class="title">rime ice</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/69.webp" alt="Gallery Image 69">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/70.webp" alt="Gallery Image 70">
+          <div class="card-body"><h2 class="title">cloudy mountains in horizon</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/71.webp" alt="Gallery Image 71">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/72.webp" alt="Gallery Image 72">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/73.webp" alt="Gallery Image 73">
+          <div class="card-body"><h2 class="title">sunset from a mountain</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/74.webp" alt="Gallery Image 74">
+          <div class="card-body"><h2 class="title">sunset from a mountain</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/75.webp" alt="Gallery Image 75">
+          <div class="card-body"><h2 class="title">sunset from a mountain</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/76.webp" alt="Gallery Image 76">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <video src="images/77.mp4" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+          <div class="card-body"><h2 class="title">snow</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/78.webp" alt="Gallery Image 78">
+          <div class="card-body"><h2 class="title">hackerbrücke</h2></div>
+          <div class="desc" style="display: none;">amazing bridge. theres nice beanches on the bridge u can sit and watch trains from.</div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/79.webp" alt="Gallery Image 79">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/80.webp" alt="Gallery Image 80">
+          <div class="card-body"><h2 class="title">mountain flowers ❀</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/81.webp" alt="Gallery Image 81">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/82.webp" alt="Gallery Image 82">
+          <div class="card-body"><h2 class="title">chamois</h2></div>
+          <div class="desc" style="display: none;">i was way more afraid of it than it was of me</div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/83.webp" alt="Gallery Image 83">
+          <div class="card-body"><h2 class="title">majestic goat</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/84.webp" alt="Gallery Image 84">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/85.webp" alt="Gallery Image 85">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/86.webp" alt="Gallery Image 86">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/87.webp" alt="Gallery Image 87">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/89.webp" alt="Gallery Image 89">
+          <div class="card-body"><h2 class="title">very pink clawds</h2></div>
+          <div class="desc" style="display: none;">yes this is "fake" cuz camera does image processing it doesnt look like that irl =/ irl is less pink and more orangey, but it was still very pink</div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/90.webp" alt="Gallery Image 90">
+          <div class="card-body"><h2 class="title">i woke up in a train to this view</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/91.webp" alt="Gallery Image 91">
+          <div class="card-body"><h2 class="title">prettiest sunset ive seen</h2></div>
+          <div class="desc" style="display: none;">wierd how on camera this isnt as pretty as some of the other pics ive taken</div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/92.webp" alt="Gallery Image 92">
+          <div class="card-body"><h2 class="title">prettiest clawds ive seen</h2></div>
+          <div class="desc" style="display: none;">very bright colors</div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/93.webp" alt="Gallery Image 93">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/94.webp" alt="Gallery Image 94">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/95.webp" alt="Gallery Image 95">
+          <div class="card-body"><h2 class="title">floded frozen forest. amazing to bike on</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+            <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/96.webp" alt="Gallery Image 96">
+          <div class="card-body"><h2 class="title">me when mango</h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+      <li class="card" onclick="openLightbox(this)">
+        <div class="card-content">
+          <img src="images/97.webp" alt="Gallery Image 97">
+          <div class="card-body"><h2 class="title"></h2></div>
+          <div class="desc" style="display: none;"></div>
+        </div>
+      </li>
+
+    </ul>
+  </main>
+
+  <div id="lightbox" onclick="if(event.target === this) closeLightbox()">
+    <div class="lb-container">
+      <button class="lb-close" onclick="closeLightbox()">&times;</button>
+      <div class="lb-image-wrapper">
+        <img id="lb-img" src="" alt="" style="display: none;">
+        <video id="lb-vid" src="" controls style="display: none;"></video>
+      </div>
+      <div class="lb-text" id="lb-text-container">
+        <h2 id="lb-title" class="title"></h2>
+        <p id="lb-desc"></p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
