@@ -97,13 +97,24 @@ function openLightbox(cardElement) {
 
   document.getElementById('lightbox').classList.add('active');
   document.body.style.overflow = 'hidden';
+  history.pushState({ lightbox: true }, '');
 }
 
-function closeLightbox() {
+function closeLightbox(fromHistory = false) {
   document.getElementById('lightbox').classList.remove('active');
   document.body.style.overflow = 'auto';
   document.getElementById('lb-vid').pause();
+  
+  if (!fromHistory && history.state && history.state.lightbox) {
+    history.back();
+  }
 }
+
+window.addEventListener('popstate', () => {
+  if (document.getElementById('lightbox').classList.contains('active')) {
+    closeLightbox(true);
+  }
+});
 
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeLightbox();
