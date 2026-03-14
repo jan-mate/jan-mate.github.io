@@ -1,0 +1,146 @@
+:root {
+    --bg: #0b0c0f;
+    --card: #111218;
+    --text: #e9e9ef;
+    --muted: #b7b7c5;
+    --ring: #ffffff;
+    --ring-soft: rgba(255,255,255,0.22);
+    --gap: 16px;
+  }
+  
+  * { box-sizing: border-box }
+  html, body { height: 100% }
+  
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.45 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial;
+    color-scheme: dark;
+  }
+  
+  .wrap {
+    min-height: 100svh;
+    display: grid;
+    place-items: start center;
+    padding: 16px;
+  }
+  
+  .grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: min(92vw, 1000px);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap);
+    grid-auto-rows: 6px;
+  }
+  
+  @media (min-width: 640px) { .grid { grid-template-columns: repeat(2, 1fr) } }
+  @media (min-width: 980px) { .grid { grid-template-columns: repeat(3, 1fr) } }
+  
+  .card {
+    position: relative;
+    background: var(--card);
+    border: 1.5px solid var(--ring-soft);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color .18s ease, box-shadow .18s ease, transform .1s ease;
+  }
+  
+  .card:hover,
+  .card:focus-within {
+    border-color: var(--ring);
+    box-shadow: 0 0 0 2px var(--ring);
+  }
+  
+  .card:active { transform: translateY(1px) }
+  
+  .card-content { display: block }
+  
+  .thumb {
+    --img-max-w: none;
+    --pad-x: 0px;
+    --pad-y: 0px;
+    width: 100%;
+    background: #0f1016;
+    padding-left: var(--pad-x);
+    padding-right: var(--pad-x);
+    padding-top: var(--pad-y); 
+    padding-bottom: var(--pad-y);
+  }
+  
+  
+  .thumb img {
+    display: block;
+    width: 100%;
+    max-width: var(--img-max-w);
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .u-imgw-40 { --img-max-w: 40% }
+  .u-imgw-50 { --img-max-w: 50% }
+  .u-imgw-60 { --img-max-w: 60% }
+  .u-imgw-70 { --img-max-w: 70% }
+  .u-imgw-80 { --img-max-w: 80% }
+  .u-imgw-90 { --img-max-w: 90% }
+  .u-imgw-100 { --img-max-w: 100% }
+  
+  .u-padx-12 { --pad-x: 12px }
+  .u-padx-16 { --pad-x: 16px }
+  .u-padx-24 { --pad-x: 24px }
+  .u-padx-32 { --pad-x: 32px }
+
+  .u-pady-6  { --pad-y: 6px }
+  .u-pady-12 { --pad-y: 12px }
+  .u-pady-16 { --pad-y: 16px }
+  .u-pady-24 { --pad-y: 24px }
+  .u-pady-32 { --pad-y: 32px }
+  
+  .thumb--padded-lg { padding: 24px }
+  .thumb--logo img { max-width: 70%; margin: 0 auto }
+  
+  .card-body { padding: 16px 18px 18px; }
+  .card:has(.note-link) .card-body { padding-bottom: 36px; }
+  .title { margin: 0 0 6px; font-size: clamp(18px, 2.6vw, 22px); line-height: 1.2 }
+  .desc { margin: 0; color: var(--muted); font-size: 0.975rem }
+  
+  /* big overlay link, sits below note-link */
+  .whole-link {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: 16px;
+    outline: none;
+  }
+  
+  /* small bottom-right "Blog" link with icon */
+  .note-link {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    z-index: 2;
+    display: inline-flex;           /* icon + text alignment */
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    border-radius: 10px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: .92rem;
+  }
+  
+  .note-link:hover,
+  .note-link:focus-visible { text-decoration: underline }
+  
+  /* make SVG inherit text color and size nicely */
+  .note-link svg {
+    width: 1.4em;
+    height: 1.4em;
+    display: block;
+    flex: 0 0 auto;
+  }
+  
