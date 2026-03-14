@@ -277,6 +277,12 @@ body {
     justify-content: center;
 }
 
+@media (max-width: 768px) {
+    .random-images img:nth-child(n+3) {
+        display: none !important;
+    }
+}
+
 .random-images img {
     width: 250px;
     height: 250px;
@@ -292,6 +298,21 @@ body {
     justify-content: center;
     padding: 4rem 0;
     background: #000;
+}
+
+.text-link-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0;
+    font-weight: bold;
+}
+
+.text-link-btn:hover {
+    color: #ccc;
 }
 
 .projects-title {
@@ -337,3 +358,4 @@ body {
     transition: 0.3s;
 }
 .card-content a:hover { background: #ccc; }
+

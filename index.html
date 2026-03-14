@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>safi</title>
+    <title>safi's website</title>
     <script type="importmap">
         {
             "imports": {
@@ -14,6 +14,14 @@
     </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Forces exactly 2 images on mobile, 4 on desktop */
+        @media (max-width: 768px) {
+            #random-images-container-3d img:nth-child(n+3) {
+                display: none !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <section id="hero">
@@ -55,17 +63,24 @@
         </div>
     </section>
 
-    <section id="three-section" class="scroll-track">
-        <div class="sticky-container" id="three-container"></div>
-    </section>
+    <section id="three-section" class="scroll-track" style="height: 750dvh;">
+        <div class="sticky-container" id="three-container">
+            
+            <div id="nature-text-3d" style="position: absolute; color: white; font-size: clamp(1.5rem, 4vw, 3rem); text-align: center; width: 100%; left: 0; top: 0; z-index: 2; pointer-events: none; text-shadow: 0 4px 10px rgba(0,0,0,0.8); opacity: 0; will-change: transform;">
+                nature is my fav place
+            </div>
+            
+            <div id="gallery-preview-3d" style="position: absolute; left: 0; top: 0; width: 100%; z-index: 2; background: transparent; box-sizing: border-box; text-align: center; opacity: 0; padding: 20px; will-change: transform;">
+                <p style="font-size: 1.4rem; margin-bottom: 3rem; text-shadow: 0 2px 5px #000;">most of my fav pics are from nature, <a href="/gallery/index.html" style="color:#fff;">see my gallery</a> for all my fav pics.</p>
+                <div class="random-images" id="random-images-container-3d" style="display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; margin-bottom: 2rem;"></div>
+                <button id="randomize-btn-3d" style="background: none; border: none; color: #fff; text-decoration: underline; cursor: pointer; font-size: 1.2rem; font-weight: bold; margin: 0 auto; display: block; padding: 10px;">randomize images</button>
+            </div>
 
-    <section id="gallery-preview">
-        <p>Most of my fav pics are from nature, <a href="/gallery/index.html">see my gallery</a> for all my fav pics.</p>
-        <div class="random-images" id="random-images-container"></div>
+        </div>
     </section>
 
     <section id="projects-section">
-        <h2 class="projects-title">My Projects</h2>
+        <h2 class="projects-title">my projects</h2>
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
@@ -235,26 +250,32 @@
                 });
             }
 
-            const galleryContainer = document.getElementById('random-images-container');
+            const galleryContainer = document.getElementById('random-images-container-3d');
+            
             function loadRandomImages() {
+                if(!galleryContainer) return;
                 galleryContainer.innerHTML = '';
                 const usedNumbers = new Set();
+                
                 for (let i = 0; i < 4; i++) {
-                    let num;
-                    do { num = Math.floor(Math.random() * 97) + 1; } while (usedNumbers.has(num));
-                    usedNumbers.add(num);
                     const img = document.createElement('img');
-                    img.src = `gallery/images/${num}.webp`;
-                    img.onerror = () => img.style.display = 'none';
                     galleryContainer.appendChild(img);
+                    
+                    function tryLoad() {
+                        let num;
+                        do { num = Math.floor(Math.random() * 97) + 1; } while (usedNumbers.has(num));
+                        usedNumbers.add(num);
+                        img.src = `gallery/images/${num}.webp`;
+                    }
+                    
+                    img.onerror = tryLoad;
+                    tryLoad();
                 }
             }
             loadRandomImages();
-            
-            const btn = document.createElement('button');
-            btn.innerText = "Randomize Images";
-            btn.onclick = loadRandomImages;
-            document.getElementById('gallery-preview').prepend(btn);
+
+            const btn = document.getElementById('randomize-btn-3d');
+            if(btn) btn.onclick = loadRandomImages;
 
             if (window.VineApp) window.VineApp.init();
             if (window.TerrainApp && typeof window.TerrainApp.init === 'function') window.TerrainApp.init();
