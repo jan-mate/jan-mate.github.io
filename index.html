@@ -41,17 +41,18 @@
 
     <section id="vine-section" class="scroll-track">
         <div class="sticky-container">
-            <canvas id="vineCanvas"></canvas>
-            <div class="vine-text-content">
-                <h2>Hedera Helix</h2>
-                <p>Procedural generation with occlusion shadows and directional tips.</p>
+            <div class="vine-wrapper">
+                <canvas id="vineCanvas"></canvas>
+            </div>
+            <div class="taxo-wrapper">
+                <div class="taxo-content">
+                    <p>i love plants, and classifying them. ive made interactive taxonomic trees with many plants:</p>
+                    <a href="/trees/index.html">
+                        <img src="projects/wiki_taxo_trees.png" alt="Taxonomic Trees">
+                    </a>
+                </div>
             </div>
         </div>
-    </section>
-
-    <section class="interstitial-text">
-        <h2>The Ascent</h2>
-        <p>This is some placeholder text resting beneath the vines, preparing you for the mountains ahead.</p>
     </section>
 
     <section id="three-section" class="scroll-track">
@@ -143,20 +144,17 @@
 
             loader.load('Squirrel.glb', function (gltf) {
                 const model = gltf.scene;
-
                 model.rotation.x = -Math.PI / 2;
 
                 model.traverse((node) => {
                     if (node.isMesh) {
                         node.geometry = BufferGeometryUtils.mergeVertices(node.geometry);
-                        
                         const blackMat = new THREE.MeshBasicMaterial({ 
                             color: 0x000000,
                             polygonOffset: true,
                             polygonOffsetFactor: 1,
                             polygonOffsetUnits: 1
                         });
-                        
                         const edgeGeom = new THREE.EdgesGeometry(node.geometry, 40);
                         const lineMat = new THREE.LineBasicMaterial({ color: 0xffffff });
                         const wireframe = new THREE.LineSegments(edgeGeom, lineMat);
@@ -169,7 +167,6 @@
                 const box = new THREE.Box3().setFromObject(model);
                 const size = box.getSize(new THREE.Vector3());
                 const maxDim = Math.max(size.x, size.y, size.z);
-                
                 const targetSize = 6;
                 const scale = targetSize / maxDim;
                 model.scale.set(scale, scale, scale);
@@ -180,7 +177,6 @@
 
                 pivot.add(model);
             });
-
             animate();
         }
 
@@ -204,6 +200,102 @@
         });
 
         init();
+    </script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        ScrollTrigger.config({ ignoreMobileResize: true });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            new Swiper(".mySwiper", {
+                slidesPerView: "auto",
+                spaceBetween: 30,
+                centeredSlides: true,
+                loop: false,
+                grabCursor: true
+            });
+
+            const scrollVideo = document.getElementById('scrollVideo');
+            if (scrollVideo) {
+                let observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            scrollVideo.play().catch(() => {});
+                        } else {
+                            scrollVideo.pause();
+                        }
+                    });
+                }, { threshold: 0.5 });
+                observer.observe(scrollVideo);
+
+                scrollVideo.addEventListener('timeupdate', () => {
+                    if (scrollVideo.duration && scrollVideo.currentTime >= scrollVideo.duration - 1.1) {
+                        scrollVideo.currentTime = 0;
+                        scrollVideo.play().catch(() => {});
+                    }
+                });
+            }
+
+            const galleryContainer = document.getElementById('random-images-container');
+            function loadRandomImages() {
+                galleryContainer.innerHTML = '';
+                const usedNumbers = new Set();
+                for (let i = 0; i < 4; i++) {
+                    let num;
+                    do { num = Math.floor(Math.random() * 97) + 1; } while (usedNumbers.has(num));
+                    usedNumbers.add(num);
+                    const img = document.createElement('img');
+                    img.src = `gallery/images/${num}.webp`;
+                    img.onerror = () => img.style.display = 'none';
+                    galleryContainer.appendChild(img);
+                }
+            }
+            loadRandomImages();
+            
+            const btn = document.createElement('button');
+            btn.innerText = "Randomize Images";
+            btn.onclick = loadRandomImages;
+            document.getElementById('gallery-preview').prepend(btn);
+
+            if (window.VineApp) window.VineApp.init();
+            if (window.TerrainApp && typeof window.TerrainApp.init === 'function') window.TerrainApp.init();
+
+            ScrollTrigger.create({
+                trigger: "#vine-section",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 1,
+                onUpdate: (self) => {
+                    if (window.VineApp) window.VineApp.draw(self.progress);
+                }
+            });
+
+            
+            gsap.fromTo(".taxo-content", 
+                { opacity: 0 }, 
+                {
+                    opacity: 1,
+                    duration: 1.5,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: "#vine-section",
+                        start: "center top", 
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+
+            ScrollTrigger.create({
+                trigger: "#three-section",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 1,
+                onUpdate: (self) => {
+                    if (window.TerrainApp && typeof window.TerrainApp.render === 'function') {
+                        window.TerrainApp.render(self.progress);
+                    }
+                }
+            });
+        });
     </script>
 </body>
 </html>

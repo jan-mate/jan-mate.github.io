@@ -1,9 +1,10 @@
 window.VineApp = (function() {
-    let canvas, ctx, width, height;
+    let canvas, ctx, width, height, wrapper;
     let leafImg = new Image();
-    let config = { seed: 888, attractors: 1780, attractDist: 346, killDist: 56, segmentLen: 12, noiseAmt: 400, growthRate: 11 };
-    let currentSeed, nodes = [], allLeaves =[], thicknessBatches = {}, globalMaxDist = 0;
+    let config = { seed: 5, attractors: 1780, attractDist: 346, killDist: 56, segmentLen: 12, noiseAmt: 400, growthRate: 11 };
+    let currentSeed, nodes =[], allLeaves =[], thicknessBatches = {}, globalMaxDist = 0;
     let currentProgress = 0;
+    let lastWidth = 0;
 
     function random() {
         currentSeed = (currentSeed * 16807) % 2147483647;
@@ -13,41 +14,52 @@ window.VineApp = (function() {
     function init() {
         canvas = document.getElementById('vineCanvas');
         if (!canvas) return;
-        ctx = canvas.getContext('2d', { alpha: false });
+        wrapper = canvas.parentElement;
+        ctx = canvas.getContext('2d'); 
         leafImg.src = 'hedera_helix.svg';
         
+        lastWidth = window.innerWidth;
         leafImg.onload = () => draw(currentProgress);
         window.addEventListener('resize', resize);
-        resize();
+        resize(true);
     }
 
-    function resize() {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
+    function resize(force = false) {
+        let currentWidth = window.innerWidth;
+        if (!force && Math.abs(currentWidth - lastWidth) < 20) return;
+        lastWidth = currentWidth;
+
+        width = canvas.width = wrapper.clientWidth;
+        height = canvas.height = wrapper.clientHeight;
         generateTree();
         draw(currentProgress);
     }
 
     function generateTree() {
         currentSeed = config.seed;
-        let attractorsArr = [];
+        let attractorsArr =[];
         nodes =[];
         allLeaves =[];
         thicknessBatches = {};
         globalMaxDist = 0;
-        let margin = 50;
+        
+        let marginX = width < 768 ? 60 : 90;
+        let marginTop = height < 768 ? 100 : 160;
+        let marginBottom = 100;
 
         for (let i = 0; i < config.attractors; i++) {
             let x = random() * width;
             let y = random() * height;
-            if (x < margin && y > 100) continue;
-            if (x > width - margin) continue;
-            if (y < margin && x > 100) continue;
-            if (y > height - margin) continue;
-            if (x > width * 0.5 && y > height * 0.5) continue;
+            
+            if (x < marginX && y > marginTop) continue;
+            if (y < marginTop && x > marginX) continue;
+            if (x > width - marginX) continue;
+            if (y > height - marginBottom) continue;
+            
             let dx = x - 0;
             let dy = y - height;
-            if (Math.sqrt(dx*dx + dy*dy) < 300) continue;
+            if (Math.sqrt(dx*dx + dy*dy) < 300) continue; 
+            
             attractorsArr.push({ x, y, reached: false });
         }
 
@@ -112,7 +124,7 @@ window.VineApp = (function() {
             nodes.push(...newNodes);
         }
 
-        let sortedNodes = [...nodes].sort((a, b) => b.dist - a.dist);
+        let sortedNodes =[...nodes].sort((a, b) => b.dist - a.dist);
         sortedNodes.forEach(n => {
             if (n.children.length > 0) {
                 let area = n.children.reduce((sum, c) => sum + Math.pow(c.thickness, 2.2), 0);
@@ -120,7 +132,7 @@ window.VineApp = (function() {
             } else { n.thickness = 1; }
             
             let tKey = Math.round(n.thickness * 10) / 10;
-            if (!thicknessBatches[tKey]) thicknessBatches[tKey] = [];
+            if (!thicknessBatches[tKey]) thicknessBatches[tKey] =[];
             thicknessBatches[tKey].push(n);
         });
 
@@ -158,7 +170,8 @@ window.VineApp = (function() {
         ctx.setTransform(1, 0, 0, 1, 0, 0); 
         ctx.clearRect(0, 0, width, height);
 
-        const targetDist = Math.min(globalMaxDist, progress * (config.growthRate / 10) * globalMaxDist);
+        const animMaxDist = globalMaxDist + 150;
+        const targetDist = progress * animMaxDist;
 
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
