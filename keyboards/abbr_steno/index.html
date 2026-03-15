@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abbreviation-Based Stenotype Demo</title>
+    <link rel="stylesheet" href="../article.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Abbreviation-Based Stenotype Demo</h1>
+        
+        <video src="abbr_steno.mp4" controls></video>
+
+        <h2>How does it work?</h2>
+        <p>You type an abbreveiation and press a special key (denoted ☆) to expand it.</p>
+        <p>Examples:<br>
+        ppl☆ → people<br>
+        u☆ → you<br>
+        dv☆ → develop</p>
+
+        <p>Just make a bunch of these abbreviations for the most common and slow to type words.</p>
+        <p>The ☆ key can be a special key devoted to expanding text, but it could also be regular key like <code>\</code> or <code>'</code></p>
+        <p>The expansions can have space or other punctuation after them.</p>
+
+        <h2>Regular typing can be faster?</h2>
+        <p>True, there's people who type faster than me without steno. But I'm not a fast typist, look at how slowly my hands move despite typing 160+wpm. Without steno I type around 120wpm, so it's still a significant improvement.</p>
+
+        <h2>Isn't chord based steno better?</h2>
+        <p>In many cases yes, but abbreviation-based steno has some benefits:</p>
+        <ol>
+            <li>Allows rolling (pressing the next key before the previous one is released), so it doesn’t interfere with normal typing and is probably easier to learn.</li>
+            <li>More combinations. Chords can't differentiate between "ab" and "ba" but abbreviation based steno can. More combos means less key-presses and easier to remember abbreviations.</li>
+        </ol>
+
+        <h2>What software?</h2>
+        <p>AutoHotkey is great. But it's only for Windows.<br>
+        <a href="https://github.com/psoukie/zipchord" target="_blank">ZipChord</a> is an implementation using AHK.</p>
+        <p>espanso is ok, and works crossplatform.</p>
+        <p>You can probably program "magic key" on qmk to do the same thing</p>
+        <p>if u know a way to do it using kanata plz tell</p>
+    </div>
+</body>
+</html>

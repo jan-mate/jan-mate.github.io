@@ -1,4 +1,5 @@
 gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.config({ ignoreMobileResize: true });
 
 window.addEventListener('DOMContentLoaded', () => {
     
@@ -6,19 +7,18 @@ window.addEventListener('DOMContentLoaded', () => {
         slidesPerView: "auto",
         spaceBetween: 30,
         centeredSlides: true,
+        initialSlide: 3,
         loop: false,
-        grabCursor: true
+        grabCursor: true,
+        mousewheel: { forceToAxis: true }
     });
 
     const scrollVideo = document.getElementById('scrollVideo');
     if (scrollVideo) {
         let observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    scrollVideo.play().catch(() => {});
-                } else {
-                    scrollVideo.pause();
-                }
+                if (entry.isIntersecting) scrollVideo.play().catch(() => {});
+                else scrollVideo.pause();
             });
         }, { threshold: 0.5 });
         observer.observe(scrollVideo);
@@ -31,34 +31,39 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const galleryContainer = document.getElementById('random-images-container');
+    const galleryContainer = document.getElementById('random-images-container-3d') || document.getElementById('random-images-container');
     function loadRandomImages() {
+        if (!galleryContainer) return;
         galleryContainer.innerHTML = '';
         const usedNumbers = new Set();
         for (let i = 0; i < 4; i++) {
-            let num;
-            do { num = Math.floor(Math.random() * 97) + 1; } while (usedNumbers.has(num));
-            usedNumbers.add(num);
             const img = document.createElement('img');
-            img.src = `gallery/images/${num}.webp`;
-            img.onerror = () => img.style.display = 'none';
             galleryContainer.appendChild(img);
+            function tryLoad() {
+                let num;
+                do { num = Math.floor(Math.random() * 97) + 1; } while (usedNumbers.has(num));
+                usedNumbers.add(num);
+                img.src = `gallery/images/${num}.webp`;
+            }
+            img.onerror = tryLoad;
+            tryLoad();
         }
     }
     loadRandomImages();
-    
-    const btn = document.createElement('button');
-    btn.innerText = "Randomize Images";
-    btn.onclick = loadRandomImages;
-    document.getElementById('gallery-preview').prepend(btn);
 
-    if (window.VineApp) {
-        window.VineApp.init();
+    const btn = document.getElementById('randomize-btn-3d');
+    if(btn) {
+        btn.onclick = loadRandomImages;
+    } else {
+        const fallbackBtn = document.createElement('button');
+        fallbackBtn.innerText = "Randomize Images";
+        fallbackBtn.onclick = loadRandomImages;
+        const previewEl = document.getElementById('gallery-preview');
+        if(previewEl) previewEl.prepend(fallbackBtn);
     }
 
-    if (window.TerrainApp && typeof window.TerrainApp.init === 'function') {
-        window.TerrainApp.init();
-    }
+    if (window.VineApp && typeof window.VineApp.init === 'function') window.VineApp.init();
+    if (window.TerrainApp && typeof window.TerrainApp.init === 'function') window.TerrainApp.init();
 
     ScrollTrigger.create({
         trigger: "#vine-section",
@@ -70,28 +75,19 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    gsap.fromTo(".vine-text-content", 
+    gsap.fromTo(".taxo-content, .vine-text-content", 
         { opacity: 0 }, 
-        { 
-            opacity: 1, 
-            duration: 1,
+        {
+            opacity: 1,
+            duration: 1.5,
+            ease: "power2.out",
             scrollTrigger: {
                 trigger: "#vine-section",
-                start: "20% top",
-                toggleActions: "play none none none"
+                start: "center top",
+                toggleActions: "play none none reverse"
             }
         }
     );
-
-    gsap.to(".vine-text-content", {
-        y: -300,
-        scrollTrigger: {
-            trigger: "#vine-section",
-            start: "40% top",
-            end: "bottom top",
-            scrub: true
-        }
-    });
 
     ScrollTrigger.create({
         trigger: "#three-section",

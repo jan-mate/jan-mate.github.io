@@ -568,3 +568,101 @@ body {
     .card-content h3 { font-size: 2rem; }
     .card-content h4 { font-size: 1.4rem; }
 }
+
+#keyboard-section {
+    display: flex;
+    flex-direction: column;
+    background: #000;
+    padding: 4rem 0.5rem;
+    align-items: flex-start;
+    min-height: 80dvh;
+}
+
+.keyboard-image-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.keyboard-image-container img {
+    width: 100%;
+    max-width: 1600px;
+    height: auto;
+    border-radius: 6px; /* Tiny rounding added here */
+}
+
+.keyboard-image-container p {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-top: 15px;
+    text-align: center;
+    min-height: 1.5em;
+    width: 100%;
+}
+
+.keyboard-image-container a {
+    color: #fff;
+}
+
+.keyboard-text {
+    width: 100%;
+    text-align: left;
+    margin-top: 2rem;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+.keyboard-text h2 {
+    font-size: 1.6rem;
+    margin: 0;
+    line-height: 1.3;
+}
+
+#typed-text-sub {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-top: 1rem;
+}
+
+#typed-text-sub a {
+    color: #fff;
+}
+
+.cursor {
+    display: inline-block;
+    font-weight: bold;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@media (min-width: 768px) {
+    #keyboard-section {
+        flex-direction: row;
+        padding: 4rem 5%;
+        justify-content: space-between;
+    }
+    .keyboard-image-container {
+        flex: 2;
+        align-items: flex-start;
+    }
+    .keyboard-image-container p {
+        text-align: center;
+        width: 100%;
+    }
+    .keyboard-text {
+        flex: 1;
+        padding-left: 3rem;
+        margin-top: 0;
+    }
+    .keyboard-text h2 {
+        font-size: 2.2rem;
+    }
+    #typed-text-sub {
+        font-size: 1.3rem;
+    }
+}
