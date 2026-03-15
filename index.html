@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>safi's website</title>
+    <title>safi's site</title>
     <script type="importmap">
         {
             "imports": {
@@ -182,38 +182,104 @@
         </div>
     </section>
 
-    <section id="projects-section">
-        <h2 class="projects-title">my projects</h2>
+    <section id="favs-section">
+        <div class="swipe-hint">← swipe to explore →</div>
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
+                
                 <div class="swiper-slide">
                     <div class="card-content">
-                        <h3>Tree Taxonomy</h3>
-                        <p>Exploring the branches of nature.</p>
-                        <a href="/trees/index.html">View Project</a>
+                        <h3>fav flags</h3>
+                        <div class="card-body-centered">
+                            <img src="ee.png" alt="Estonia" class="fav-img estonia-flag">
+                            <h4 style="margin-top: 20px;">honorable mentions</h4>
+                            <div class="honorable-grid">
+                                <img src="sc.png" alt="Seychelles"><img src="mh.png" alt="Marshall"><img src="pa.png" alt="Panama">
+                                <img src="Transgender_Pride_flag.svg.webp" alt="Trans"><img src="qing.png" alt="Qing"><img src="Flag_of_Grand_Gedeh_County.svg.png" alt="Gedeh">
+                            </div>
+                        </div>
                     </div>
                 </div>
+
                 <div class="swiper-slide">
                     <div class="card-content">
-                        <h3>Life Expectancy</h3>
-                        <p>Data visualization over time.</p>
-                        <a href="/life-expectancy/index.html">View Project</a>
+                        <h3>fav food</h3>
+                        <div class="card-body-centered">
+                            <p class="sub-desc">(by flavor)</p>
+                            <h4 style="font-size: 2rem;">mango</h4>
+                            <img src="mango.svg" alt="Mango" class="fav-img mango-img">
+                            <p class="sub-desc">specifically tommy atkins</p>
+                        </div>
                     </div>
                 </div>
+
                 <div class="swiper-slide">
                     <div class="card-content">
-                        <h3>Safi Beats</h3>
-                        <p>Audio visualizer and journal.</p>
-                        <a href="/blog/safi-beats.html">Listen</a>
+                        <h3>fav dish</h3>
+                        <div class="card-body-centered recipe-container">
+                            <h4 style="align-self: flex-start; margin-bottom: 5px;">ingredients</h4>
+                            <div class="recipe-cols" style="display: flex; gap: 20px; justify-content: center; width: 100%;">
+                                <ul style="padding-left: 0; margin: 0; text-align: left; list-style-position: inside;"><li>150g oats</li><li>250g water</li><li>40g frozen berries</li><li>200g fruit chunks</li><li>15g nuts</li></ul>
+                                <ul style="padding-left: 0; margin: 0; text-align: left; list-style-position: inside;"><li>10g poppy seeds</li><li>8g ground flax</li><li>8g cocoa</li><li>Vit B12 pill</li><li>Vit D pill</li></ul>
+                            </div>
+                            <h4 style="align-self: flex-start; margin-top: 15px; margin-bottom: 5px;">instructions</h4>
+                            <ol class="recipe-steps" style="text-align: left; margin: 0; padding-left: 20px;">
+                                <li>put oats, water, berries in bowl</li>
+                                <li>bake at 5°C for 0-12hrs</li>
+                                <li>put the rest of ingredients ontop</li>
+                            </ol>
+                        </div>
                     </div>
                 </div>
+
                 <div class="swiper-slide">
                     <div class="card-content">
-                        <h3>Morph Graph</h3>
-                        <p>Interactive graph algorithms.</p>
-                        <a href="/morph_graph/index.html">Interact</a>
+                        <h3>fav train</h3>
+                        <div class="card-body-centered">
+                            <a href="https://maps.google.com/?q=32.82881,13.11156" target="_blank">
+                                <img src="ic4libya.jpg" alt="Train" class="fav-img train-img">
+                            </a>
+                            <a href="https://maps.google.com/?q=32.82881,13.11156" class="grey-link" target="_blank">this one</a>
+                        </div>
                     </div>
                 </div>
+
+                <div class="swiper-slide">
+                    <div class="card-content">
+                        <h3>fav color</h3>
+                        <div class="card-body-centered">
+                            <p class="sub-desc">pick the highest one that fits your definition of color.</p>
+                            <ol class="color-list">
+                                <li>3V electrophosphene</li>
+                                <li>black</li>
+                                <li>UV <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0199940" target="_blank" class="grey-link">(yes that is visible)</a></li>
+                                <li class="rainbow-text"><span>r</span><span>a</span><span>i</span><span>n</span><span>b</span><span>o</span></li>
+                                <li>white</li>
+                                <li>violet</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="card-content">
+                        <h3>fav number</h3>
+                        <div class="card-body-centered">
+                            <img src="pi.svg" alt="Pi" class="fav-img" style="width: 70%; height: auto;">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide">
+                    <div class="card-content">
+                        <h3>fav flower</h3>
+                        <div class="card-body-centered">
+                            <h4 style="margin-bottom: 25px;">poppy</h4>
+                            <img src="poppy.svg" alt="Poppy" class="fav-img fit-img">
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -325,12 +391,15 @@
 
         window.addEventListener('DOMContentLoaded', () => {
             new Swiper(".mySwiper", {
-                slidesPerView: "auto",
-                spaceBetween: 30,
-                centeredSlides: true,
-                loop: false,
-                grabCursor: true
-            });
+            slidesPerView: "auto",
+            spaceBetween: 30,
+            centeredSlides: true,
+            loop: false,
+            grabCursor: true,
+            mousewheel: {
+                forceToAxis: true,
+            }
+        });
 
             const scrollVideo = document.getElementById('scrollVideo');
             if (scrollVideo) {
