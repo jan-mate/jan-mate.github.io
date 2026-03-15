@@ -290,6 +290,147 @@ body {
     border-radius: 12px;
 }
 
+#music-section {
+    padding: 3rem 5%;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#music-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+
+.music-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 1500px; 
+}
+
+@media (min-width: 1024px) {
+    .music-container {
+        flex-direction: row;
+        gap: 10rem;
+    }
+}
+
+.music-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.music-img-link {
+    order: 1;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 300px; 
+}
+
+.music-text {
+    order: 2;
+}
+
+@media (min-width: 1024px) {
+    .music-img-link {
+        max-width: 350px;
+    }
+    .col-text-top .music-text { order: 1; }
+    .col-text-top .music-img-link { order: 2; }
+    
+    .col-img-top .music-img-link { order: 1; }
+    .col-img-top .music-text { order: 2; }
+}
+
+.music-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.music-img-link:hover .music-img {
+    transform: scale(1.03);
+}
+
+.music-text h3 {
+    font-size: 1.6rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.music-text ol {
+    padding-left: 1.5rem;
+    margin: 0;
+}
+
+.music-text li {
+    font-size: 1.05rem;
+    margin-bottom: 0.7rem;
+    line-height: 1.2; 
+}
+
+.music-text a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.music-text a:hover {
+    color: #ccc;
+    text-decoration: underline;
+}
+
+.sub-text {
+    margin-top: 0.3rem;
+}
+
+.genre {
+    color: #bbb;
+    font-size: 0.95rem;
+}
+
+.comment {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.more-music {
+    margin-top: 4rem;
+    font-size: 1.3rem;
+    text-align: center;
+    color: #ccc;
+}
+
+.more-music a {
+    color: #fff;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.more-music a:hover {
+    color: #999;
+}
+
+@media (min-width: 1024px) {
+    .more-music {
+        margin-top: 3rem;
+    }
+}
+
 #projects-section {
     min-height: 100dvh;
     display: flex;
@@ -358,4 +499,3 @@ body {
     transition: 0.3s;
 }
 .card-content a:hover { background: #ccc; }
-
