@@ -430,8 +430,9 @@ body {
         margin-top: 3rem;
     }
 }
+
 #favs-section { 
-    padding: 4rem 0; 
+    padding: 20rem 0; 
     background: #000; 
     text-align: center; 
 }
@@ -665,4 +666,130 @@ body {
     #typed-text-sub {
         font-size: 1.3rem;
     }
+}
+
+#keyboard-section {
+    padding-bottom: 0;
+}
+
+#contact-projects-section {
+    background: #000;
+    padding: 0 5% 1rem 5%;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+}
+
+.cp-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+@media (min-width: 768px) {
+    #contact-projects-section {
+        padding-bottom: 16rem; 
+    }
+
+    .cp-container {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 10rem;
+    }
+    .cp-left, .cp-right {
+        flex: 1;
+    }
+}
+
+.cp-left h2, .cp-right h2 {
+    font-size: 2.5rem;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+.cp-left p {
+    font-size: 1.3rem;
+    margin: 0.5rem 0;
+    color: #ccc;
+}
+
+.underline-link {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.social-links {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 3rem;
+    width: 100%;
+}
+
+.social-links img {
+    width: 100px;
+    height: 100px;
+    transition: transform 0.2s ease;
+}
+
+.social-links img[src="github.svg"] {
+    width: 80px;
+    height: 80px;
+}
+
+.social-links a:hover img {
+    transform: scale(1.1);
+}
+
+.contact-item {
+    margin-bottom: 2.5rem;
+}
+
+.contact-main {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.4rem;
+    margin-bottom: 0.4rem;
+}
+
+.contact-icon {
+    width: 55px;
+    height: 55px;
+}
+
+.contact-sub {
+    font-size: 1.1rem;
+    color: #888;
+    padding-left: 4.5rem;
+}
+
+.email-text {
+    display: inline-flex;
+    align-items: center;
+    overflow: visible;
+    padding-bottom: 4px;
+}
+
+.email-svg {
+    height: 1.2rem;
+    width: auto;
+    margin: 0 2px;
+}
+
+.email-svg.dot-svg {
+    transform: translateY(-3px);
+}
+
+img[src="at.svg"] {
+    transform: translateY(-2px);
+    vertical-align: middle;
+}
+
+img[src="at.svg"] {
+    height: 1.3rem;
+    margin-bottom: -2px; 
+    transform: translateY(-3px);
 }

@@ -45,7 +45,7 @@ window.TerrainApp = (function() {
         const galleryDistance = 6000;
         const galleryY = isMobile ? -5500 : -3500;
         
-        cameraTravel = isMobile ? 14500 : 11500; 
+        cameraTravel = isMobile ? 30000 : 20000; 
 
         textPos.set(data.cam_x + dirX * textDistance, textY, data.cam_z + dirZ * textDistance);
         galleryPos.set(data.cam_x + dirX * galleryDistance, galleryY, data.cam_z + dirZ * galleryDistance);

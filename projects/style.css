@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'SafiDisplay';
+  src: url('../fonts/safi.woff2') format('woff2');
+}
+
+.safi-font-card .title, 
+.safi-font-card .desc {
+  font-family: 'SafiDisplay', sans-serif !important;
+}
+
 :root {
     --bg: #0b0c0f;
     --card: #111218;
