@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f0f10">
+  <meta name="description" content="Misophonia Sounds &mdash; play misophonia trigger sounds at randomized intervals.">
+  <title>Misophonia Sounds</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+
+    <header class="header">
+      <h1>Misophonia Sounds</h1>
+      <details class="blurb">
+        <summary>
+          <span class="blurb-caret" aria-hidden="true"></span>
+          <span>What is this?</span>
+        </summary>
+        <p>
+          Misophonia is a disorder characterized by an intense emotional reaction, such as anger or disgust,
+          to specific sounds, often those made by other people, like chewing or breathing.
+        </p>
+        <p>
+          Pick the sounds you want included, set how often they play and how unpredictable the timing is,
+          then press the big play button.
+        </p>
+      </details>
+    </header>
+
+    <section class="play-area" aria-labelledby="play-status">
+      <div class="play-btn-row">
+        <button id="playBtn" class="play-btn" type="button" aria-label="Start session">
+          <span class="play-btn-icon" id="playBtnIcon" aria-hidden="true"></span>
+          <span class="play-btn-ring" aria-hidden="true"></span>
+        </button>
+        <button id="skipBtn" class="skip-btn" type="button" aria-label="Skip current sound" hidden>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 18l8.5-6L6 6v12zm2-8.14L11.03 12 8 14.14V9.86zM16 6h2v12h-2z"/></svg>
+        </button>
+      </div>
+      <p id="play-status" class="play-status" aria-live="polite">Loading sounds&hellip;</p>
+      <label class="slider-row volume-row">
+        <span class="slider-row-label">Volume</span>
+        <input id="volumeSlider" class="slider" type="range" min="0" max="100" step="1" value="50">
+        <span id="volumeValue" class="slider-row-value">50%</span>
+      </label>
+    </section>
+
+    <section class="controls" aria-label="Session controls">
+      <div class="control">
+        <div class="control-label">
+          Average interval <span class="control-unit">(seconds)</span>
+        </div>
+        <div class="slider-row">
+          <input id="avgInterval" class="slider" type="range" min="0" max="120" step="1" value="30">
+          <input id="avgIntervalNum" class="num-input" type="number" min="0" max="600" step="1" value="30">
+        </div>
+      </div>
+
+      <div class="control">
+        <div class="control-label">
+          Randomness <span class="control-unit">(%)</span>
+        </div>
+        <div class="slider-row">
+          <input id="variability" class="slider" type="range" min="0" max="100" step="1" value="40">
+          <input id="variabilityNum" class="num-input" type="number" min="0" max="100" step="1" value="40">
+        </div>
+        <p class="hint">
+          0% &mdash; sounds play at exactly the average interval.
+          Higher values make the gaps between sounds more unpredictable.
+        </p>
+      </div>
+
+      <div class="control">
+        <div class="control-label">
+          Session length <span class="control-unit">(minutes)</span>
+        </div>
+        <div class="slider-row">
+          <input id="sessionMinutes" class="slider" type="range" min="1" max="60" step="1" value="10">
+          <input id="sessionMinutesNum" class="num-input" type="number" min="1" max="600" step="1" value="10">
+        </div>
+        <label class="checkbox">
+          <input id="noLimit" type="checkbox">
+          <span>No time limit (run until stopped)</span>
+        </label>
+      </div>
+    </section>
+
+    <section class="sounds" aria-labelledby="sounds-heading">
+      <header class="sounds-header">
+        <h2 id="sounds-heading">
+          Sounds
+          <span id="soundsBadge" class="badge">0 of 0 enabled</span>
+        </h2>
+        <div class="sounds-actions">
+          <button type="button" class="ghost" data-action="reset">Reset to defaults</button>
+        </div>
+      </header>
+      <p class="sounds-desc">Pick the common trigger sounds you want included.</p>
+
+      <details class="advanced">
+        <summary>
+          <span class="advanced-caret" aria-hidden="true"></span>
+          <span class="advanced-label">Advanced options</span>
+        </summary>
+        <div class="advanced-body">
+          <label class="checkbox">
+            <input id="equalCategories" type="checkbox">
+            <span>Equal category probability — each sound category is equally likely, regardless of how many sounds it has</span>
+          </label>
+          <label class="checkbox">
+            <input id="ignoreWeights" type="checkbox">
+            <span>Ignore weights — each individual enabled sound is equally likely</span>
+          </label>
+          <p class="hint">
+            When advanced is open, each sound shows a weight input. Higher weight = more likely to be picked within its category.
+          </p>
+        </div>
+      </details>
+
+      <div id="soundList" class="sound-list"></div>
+    </section>
+
+    <footer class="footer">
+      <p>
+        Audio clips are sourced from <a href="https://doi.org/10.5334/jopd.94" target="_blank" rel="noopener">FOAMS
+        &mdash; Free Open-Access Misophonia Stimuli</a> (Orloff, Benesch &amp; Hansen, 2023).
+      </p>
+      <p>
+        No data is uploaded; settings are stored in your browser. Code for this website is available on
+        <a href="https://github.com/jan-mate/jan-mate.github.io/tree/main/misophonia" target="_blank" rel="noopener">GitHub</a>.
+      </p>
+      <p>Contact: <span id="contact-email"></span></p>
+    </footer>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

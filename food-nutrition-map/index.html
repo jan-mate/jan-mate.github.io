@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!--
+    To view this locally, fetch('data.json') requires a web server. Run:
+    cd output && python -m http.server 8000
+    Then open http://localhost:8000
+  -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Food Nutrition Map</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Food Nutrition Map</h1>
+    <div class="controls">
+      <div class="search-container">
+        <input id="search" type="text" placeholder="Search food..." autocomplete="off">
+      </div>
+      <button id="reset">Reset view</button>
+    </div>
+  </header>
+  
+  <main>
+    <svg id="plot"></svg>
+  </main>
+
+  <div id="tooltip" class="hidden"></div>
+
+  <div id="detail-panel" class="hidden">
+    <button id="detail-close" aria-label="Close detail panel">&times;</button>
+    <div id="detail-body"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
