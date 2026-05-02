@@ -1,0 +1,64 @@
+/* site/tree.css */
+#tree-container {
+    position: absolute;
+    inset: 0;
+    cursor: grab;
+    z-index: 100;
+}
+
+#tree-container:active {
+    cursor: grabbing;
+}
+
+.node text {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    text-shadow: 0 1px 0 #f2f1ed, 1px 0 0 #f2f1ed, 0 -1px 0 #f2f1ed, -1px 0 0 #f2f1ed;
+    cursor: pointer;
+    fill: #3a3a3a;
+}
+
+.link {
+    fill: none;
+    stroke: #aaa;
+    stroke-linecap: butt;
+    stroke-linejoin: round;
+}
+
+.node.found text {
+    font-weight: bold;
+    fill: #f57f17;
+}
+
+.sidebar-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    align-items: stretch;
+}
+
+.sidebar-actions #plant-link {
+    height: 36px;
+    margin-bottom: 0;
+    box-sizing: border-box;
+}
+
+.btn-explorer {
+    background: var(--accent) !important;
+    color: white !important;
+    border: 1px solid transparent !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    box-sizing: border-box;
+    height: 36px;
+}
+
+.btn-explorer:hover {
+    background: var(--accent-dim) !important;
+}

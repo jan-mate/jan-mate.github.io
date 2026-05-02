@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arboretet Taxonomic Tree</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../tree.css" />
+</head>
+<body>
+    <div id="top-bar">
+        <a id="title-card" href="../index.html" class="header-card">
+            <span class="title-main">Arboretet Hørsholm</span>
+        </a>
+        <div id="search-container" class="header-card">
+            <input id="search-tree" type="search" placeholder="Search tree…" autocomplete="off" />
+            <div style="display: flex; align-items: center; min-width: 90px; justify-content: flex-end;">
+                <span id="search-status" style="font-size: 11px; color: var(--muted); text-align: right; font-weight: 700; margin-right: 4px; display: none;"></span>
+                <button id="search-prev" class="btn-icon" title="Previous match" style="display:none; font-weight: 900; font-size: 16px; padding: 2px;">▲</button>
+                <button id="search-next" class="btn-icon" title="Next match" style="display:none; font-weight: 900; font-size: 16px; padding: 2px;">▼</button>
+            </div>
+        </div>
+        <div id="actions-card" class="header-card">
+            <button id="reset-tree-view" class="btn-icon" title="Reset view">Reset</button>
+            <div class="sep"></div>
+            <button id="info-btn" class="btn-icon" title="Information">?</button>
+            <div class="sep"></div>
+            <a href="../index.html" class="nav-link">Map</a>
+        </div>
+    </div>
+
+    <div id="info-modal" class="modal hidden">
+        <div class="modal-content">
+            <button id="close-modal">&times;</button>
+            <h2>Taxonomic Tree Guide</h2>
+            <p>Explore the hierarchy of plant species. You can zoom and pan to navigate the tree. Try clicking on the text to see details.</p>
+            <p><strong>Disclaimer:</strong> I am <strong>not affiliated</strong> with Arboretet.</p>
+            <p>Plant taxonomy data is provided by Arboretet Hørsholm (note: this taxonomic data may be contradictory or incorrect).</p>
+            <p>Images and descriptions are sourced from Wikipedia; no claim is made regarding their accuracy.</p>
+            <p>Visit <a href="https://ign.ku.dk/arboret-hoersholm/" target="_blank">Arboretets official website</a></p>
+            <p>Contact: <a href="mailto:janmate@tutanota.com">janmate@tutanota.com</a></p>
+        </div>
+    </div>
+
+    <div id="tree-container">
+        <!-- SVG will be injected here -->
+    </div>
+
+    <div id="tooltip" class="hidden"></div>
+
+    <aside id="sidebar" class="hidden">
+        <button id="close-sidebar" title="Close">&times;</button>
+        <div id="sidebar-image-wrap">
+            <img id="plant-image" alt="" />
+        </div>
+        <div id="sidebar-body">
+            <h2 id="plant-species"></h2>
+            <p id="plant-common"></p>
+            <p id="plant-summary"></p>
+            <div class="sidebar-actions">
+                <a id="plant-link" href="#" target="_blank" rel="noopener">
+                    <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" style="overflow: visible;">
+                        <circle cx="10" cy="10" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                        <text x="10" y="14.5" text-anchor="middle" fill="currentColor" font-size="12" font-weight="bold" font-family="Linux Libertine,Georgia,serif">W</text>
+                    </svg>
+                    Wikipedia
+                </a>
+                <a id="explorer-link" href="#" class="btn-explorer">Show on Map</a>
+            </div>
+            <dl id="plant-meta"></dl>
+        </div>
+    </aside>
+
+    <div id="status"></div>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="../tree.js"></script>
+</body>
+</html>
